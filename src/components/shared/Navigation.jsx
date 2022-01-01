@@ -6,30 +6,34 @@ function Navigation() {
     <div className="navigation">
       <nav className="navbar navbar-expand-lg navbar-light fixed-top">
         <div className="container">
-          <NavLink className="navbar-brand" to="/">
+          <NavLink style={{fontSize: 32,color: 'white'}} className="navbar-brand" to="/">
             PetPal
           </NavLink>
           <div>
             <ul className="navbar-nav ml-auto">
               <li className="nav-item">
-                <NavLink exact className="nav-link" to="/">
+                <NavLink style={{color: 'white'}} className="nav-link" to="/home">
                   Home
-                  <span className="sr-only">(current)</span>
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/about">
+                <NavLink style={{color: 'white'}} className="nav-link" to="/about">
                   About
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/contact">
+                <NavLink style={{color: 'white'}} className="nav-link" to="/contact">
                   Contact
                 </NavLink>
               </li>
               <li className="nav-item">
-                <NavLink className="nav-link" to="/login">
+                <NavLink style={{color: 'white'}} className="nav-link" to="/login">
                   Login
+                </NavLink>
+              </li>
+              <li className="nav-item">
+                <NavLink style={{color: 'white'}} className="nav-link" to="/logout">
+                  Logout
                 </NavLink>
               </li>
             </ul>

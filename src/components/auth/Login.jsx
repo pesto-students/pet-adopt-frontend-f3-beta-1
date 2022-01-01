@@ -1,6 +1,7 @@
 import React,{useState} from 'react'
 import {useNavigate} from 'react-router-dom'
 import {Button,Form} from 'react-bootstrap';
+import FetchLoginAuth from '../../api/api.js'
 
 function Login() {
     const navigate = useNavigate();
@@ -18,22 +19,14 @@ function Login() {
 
         const {email, password} = user;
 
-        const res = await fetch(
-            "/signin",{
-                method: "POST",
-                headers: {
-                    "Content-Type": "application/json"
-                },
-                body: JSON.stringify({email, password})
-            }            
-        )
+        const res = await FetchLoginAuth(email, password);
 
         const data = await res.json();
         console.log(data);
 
         if(data.message === 'User logged in successfully'){
-            window.alert("Login Successful!!");
-            navigate("/home")
+          window.alert("Login done...");
+          navigate("/home")
         }
         else{
             window.alert("Login failed");
@@ -67,9 +60,8 @@ function Login() {
     <Form.Control name='password' value={user.password} onChange={handleChange} type="password" placeholder="Password" />
   </Form.Group>
   <Form.Group className="mb-3" controlId="formBasicCheckbox">
-    <Form.Check type="checkbox" label="Check me out" />
   </Form.Group>
-  <Button variant="primary" onClick={handleLogin}>Login</Button>
+  <Button variant="primary" onClick={handleLogin}>Login</Button>{' '}
   <Button variant="primary" onClick={() => navigate("/signup")}>Sign Up</Button>
 </Form>
           </div>

@@ -8,7 +8,7 @@ function Header() {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src="./images/1.jpg"
+      src="https://www.owntheyard.com/wp-content/uploads/2019/10/puppy.jpg"
       alt="First slide"
     />
     <Carousel.Caption>
@@ -19,7 +19,7 @@ function Header() {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src="./images/2.jpg"
+      src="https://www.thesprucepets.com/thmb/VtqqdYnQ6eKo0VRAGWd56W_jELA=/3120x2340/smart/filters:no_upscale()/red-eared-slider--trachemys-scripta-elegans--standing-on-wood--texas--usa-980454648-6abd20d07aa541679c70e47dd15144ee.jpg"
       alt="Second slide"
     />
 
@@ -31,7 +31,7 @@ function Header() {
   <Carousel.Item>
     <img
       className="d-block w-100"
-      src="./images/3.jpg"
+      src="https://images.unsplash.com/photo-1591871937573-74dbba515c4c?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1470&q=80"
       alt="Third slide"
     />
 
