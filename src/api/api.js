@@ -1,13 +1,17 @@
-function FetchLoginAuth(email, password){ 
-    const res = fetch(
-        "/signin",{
-            method: "POST",
-            headers: {
-                "Content-Type": "application/json"
-            },
-            body: JSON.stringify({email, password})
-        });
-    return res;        
+import axios from "axios";
+
+function FetchLoginAuth(email, password) {
+  console.log(email, password, "email, password");
+  const res = axios({
+    method: "post",
+    url: "/signin",
+    headers: {
+      "Content-Type": "application/json",
+    },
+    data: { email, password },
+  });
+  console.log(res, "res frontend");
+  return res;
 }
 
-export default FetchLoginAuth
+export { FetchLoginAuth };

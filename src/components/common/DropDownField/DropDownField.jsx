@@ -1,16 +1,22 @@
-import { Tabs, Tab, Form, Button, Row } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import React from "react";
 
-function DropDownField({ category, type }) {
+function DropDownField({ category, type, onChange }) {
   let list = category[type].map((item, index) => (
-    <option key={index} value={item}>
+    <option key={item} value={item}>
       {item}
     </option>
   ));
   return (
-    <Form.Group className="mb-2" controlId="exampleForm.ControlInput1">
+    <Form.Group className="mb-2" controlId={`form ${type}`}>
       <Form.Label>Select {type}</Form.Label>
-      <Form.Select aria-label="Select Category">{list}</Form.Select>
+      <Form.Select
+        aria-label={`Select Category ${type}`}
+        onChange={onChange}
+        required
+      >
+        {list}
+      </Form.Select>
     </Form.Group>
   );
 }

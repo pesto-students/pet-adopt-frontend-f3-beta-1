@@ -1,24 +1,28 @@
 import React from "react";
+import { Form } from "react-bootstrap";
 import Autocomplete from "react-google-autocomplete";
 
 function SearchLocation({
   style,
   onPlaceSelected,
   types,
-  componentRestrictions,
+  componentrestrictions,
   required,
+  onChange,
 }) {
   return (
     <>
+      <Form.Group className="mb-3" controlId="searchLocation">
+      <Form.Label>Search Location</Form.Label>
       <Autocomplete
         style={style}
-        onPlaceSelected={(place) => {
-          console.log(place);
-        }}
+        onPlaceSelected={onPlaceSelected}
         types={types}
-        componentRestrictions={componentRestrictions}
-
-      />
+        componentrestrictions={componentrestrictions}
+        onChange={onChange}
+        required
+        />
+      </Form.Group>
     </>
   );
 }
