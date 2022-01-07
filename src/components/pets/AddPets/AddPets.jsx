@@ -1,9 +1,9 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+// import { useDispatch } from "react-redux";
 import PetCategory from "../../mock-constant/pet-category-constant.json";
 import dogs from "../../mock-constant/pet-category/dog-constant.json";
-import cats from "../../mock-constant/pet-category/cats-constant.json";
+//import cats from "../../mock-constant/pet-category/cats-constant.json";
 
 import petgender from "../../mock-constant/pet-gender-constant.json";
 import petsize from "../../mock-constant/pet-size-contant.json";
@@ -39,6 +39,7 @@ export default function AddPets() {
   const savePetDetail = () => {
     setSubmitted(true);
     console.log(addPet);
+    console.log(submitted);
   };
 
   const onPlaceSelected = (place) => {
