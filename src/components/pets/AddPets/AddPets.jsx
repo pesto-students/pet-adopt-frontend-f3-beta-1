@@ -140,7 +140,7 @@ export default function AddPets() {
           min={0}
           max={2000}
         />
-        <button onClick={savePetDetail}></button>
+        <button onClick={savePetDetail}>Submit</button>
       </Form.Group>
     </Form>
   );
