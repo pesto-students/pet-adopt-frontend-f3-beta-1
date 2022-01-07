@@ -1,8 +1,8 @@
 import { configureStore } from "@reduxjs/toolkit";
-// import rootReducer from "./reducers";
+import addPetDetailSliceReducer from "./slices/AddPetSlice";
 
 const store = configureStore({
-  reducer: {},
+  reducer: { petDetail: addPetDetailSliceReducer },
 });
 
 export default store;
