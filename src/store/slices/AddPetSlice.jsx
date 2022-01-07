@@ -1,29 +1,15 @@
-import { createSlice } from "redux-starter-kit";
+import { createSlice } from "@reduxjs/toolkit";
 
-
-const addPetDetails = createSlice({
+const addPetDetailSlice = createSlice({
   name: "addPetDetails",
   initialState: {},
-    reducers: {
+  reducers: {
     submitPetDetails(state, action) {
-      return state + 1;
-    },
-    addFive(state, action) {
-      return state + 5;
-    },
-  },
-  extraReducers: {
-    [addTwo](state, action) {
-      return state + 2;
+      console.log(state, action.payload, "submitPetDetails slice");
     },
   },
 });
 
-// console.log(counterSliceA);
-// console.log("addTwo, imported from B to A: ", addTwo);
+export const { submitPetDetails } = addPetDetailSlice.actions;
 
-const { actions, reducer } = counterSliceA;
-
-export const { increment, addFive } = actions;
-
-export default reducer;
+export default addPetDetailSlice.reducer;

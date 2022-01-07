@@ -1,10 +1,10 @@
 import React, { useState } from "react";
 import { Form } from "react-bootstrap";
-// import { useDispatch } from "react-redux";
+import { useDispatch } from "react-redux";
 import PetCategory from "../../mock-constant/pet-category-constant.json";
 import dogs from "../../mock-constant/pet-category/dog-constant.json";
 //import cats from "../../mock-constant/pet-category/cats-constant.json";
-
+import {submitPetDetails} from "../../../store/slices/AddPetSlice";
 import petgender from "../../mock-constant/pet-gender-constant.json";
 import petsize from "../../mock-constant/pet-size-contant.json";
 import DropDownField from "../../common/DropDownField/DropDownField";
@@ -14,7 +14,7 @@ export default function AddPets() {
   const initialAddPetState = {
     petname: "",
     petcategory: "Dogs",
-    petimage: {},
+    petimage: "",
     selectedPet: "",
     gender: "Male",
     age: "",
@@ -25,28 +25,61 @@ export default function AddPets() {
   };
   const [addPet, setAddPet] = useState(initialAddPetState);
   const [submitted, setSubmitted] = useState(false);
-
+  const dispatch = useDispatch();
   const handleInputChange = (event) => {
-    console.log(event.target.value, event.target.name);
     const { name, value } = event.target;
-    if (name === "searchlocation") {
-      console.log("searchlocation", value);
-      console.log(event.target);
-    }
     setAddPet({ ...addPet, [name]: value });
+    console.log(submitted, addPet);
   };
 
-  const savePetDetail = () => {
+  const savePetDetail = (event) => {
+    event.preventDefault();
     setSubmitted(true);
-    console.log(addPet);
-    console.log(submitted);
+    dispatch(submitPetDetails(addPet));
+    console.log(submitted, addPet);
   };
 
   const onPlaceSelected = (place) => {
     setAddPet({ ...addPet, searchlocation: place.formatted_address });
   };
+  const {
+    about,
+    adoptionFee,
+    age,
+    gender,
+    petcategory,
+    petimage,
+    petname,
+    searchlocation,
+    selectedPet,
+    size,
+  } = addPet;
 
-  console.log("addPet: ", addPet);
+  let enableSubmit =
+    about &&
+    adoptionFee &
+      age &
+      gender &
+      petcategory &
+      petimage &
+      petname &
+      searchlocation &
+      selectedPet &
+      size;
+  console.log(
+    enableSubmit,
+    "dissableSubmit",
+    about,
+    adoptionFee,
+    age,
+    gender,
+    petcategory,
+    petimage,
+    petname,
+    searchlocation,
+    selectedPet,
+    size
+  );
   return (
     <Form>
       <h2>Add Pet Details</h2>
@@ -141,7 +174,9 @@ export default function AddPets() {
           min={0}
           max={2000}
         />
-        <button onClick={savePetDetail}>Submit</button>
+        <button onClick={savePetDetail}>
+          Submit
+        </button>
       </Form.Group>
     </Form>
   );
