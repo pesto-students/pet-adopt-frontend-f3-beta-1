@@ -6,21 +6,24 @@ function SearchLocation({
   style,
   onPlaceSelected,
   types,
-  componentrestrictions,
+  componentRestrictions,
   required,
   onChange,
+  name,
 }) {
   return (
     <>
       <Form.Group className="mb-3" controlId="searchLocation">
-      <Form.Label>Search Location</Form.Label>
-      <Autocomplete
-        style={style}
-        onPlaceSelected={onPlaceSelected}
-        types={types}
-        componentrestrictions={componentrestrictions}
-        onChange={onChange}
-        required
+        <Form.Label>Search Location</Form.Label>
+        <Autocomplete
+          name={name}
+          style={style}
+          onPlaceSelected={onPlaceSelected}
+          types={types}
+          componentRestrictions={componentRestrictions}
+          onChange={onChange}
+          required
+          tabIndex={0}
         />
       </Form.Group>
     </>

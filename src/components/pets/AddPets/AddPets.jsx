@@ -1,7 +1,10 @@
-import React from "react";
+import React, { useState } from "react";
 import { Form } from "react-bootstrap";
+import { useDispatch } from "react-redux";
 import PetCategory from "../../mock-constant/pet-category-constant.json";
 import dogs from "../../mock-constant/pet-category/dog-constant.json";
+import cats from "../../mock-constant/pet-category/cats-constant.json";
+
 import petgender from "../../mock-constant/pet-gender-constant.json";
 import petsize from "../../mock-constant/pet-size-contant.json";
 import DropDownField from "../../common/DropDownField/DropDownField";
@@ -9,16 +12,40 @@ import SearchLocation from "../../common/SearchLocation/SearchLocation";
 
 export default function AddPets() {
   const initialAddPetState = {
-    petname: null,
-    title: "",
-    description: "",
-    published: false,
+    petname: "",
+    petcategory: "Dogs",
+    petimage: {},
+    selectedPet: "",
+    gender: "Male",
+    age: "",
+    size: "Large",
+    about: "",
+    searchlocation: "",
+    adoptionFee: "",
   };
+  const [addPet, setAddPet] = useState(initialAddPetState);
+  const [submitted, setSubmitted] = useState(false);
+
   const handleInputChange = (event) => {
-    console.log(event.target.value);
+    console.log(event.target.value, event.target.name);
     const { name, value } = event.target;
-    //setCurrentTutorial({ ...initialAddPetState, [name]: value });
+    if (name === "searchlocation") {
+      console.log("searchlocation", value);
+      console.log(event.target);
+    }
+    setAddPet({ ...addPet, [name]: value });
   };
+
+  const savePetDetail = () => {
+    setSubmitted(true);
+    console.log(addPet);
+  };
+
+  const onPlaceSelected = (place) => {
+    setAddPet({ ...addPet, searchlocation: place.formatted_address });
+  };
+
+  console.log("addPet: ", addPet);
   return (
     <Form>
       <h2>Add Pet Details</h2>
@@ -96,11 +123,10 @@ export default function AddPets() {
         name="searchlocation"
         style={{ width: "40%" }}
         onChange={handleInputChange}
-        onPlaceSelected={(place) => {
-          console.log({ searchlocation: place.formatted_address });
-        }}
+        onPlaceSelected={onPlaceSelected}
+        onSelect={handleInputChange}
         types={["(regions)"]}
-        componentrestrictions={{ country: "in" }}
+        componentRestrictions={{ country: "in" }}
         required
       />
       <Form.Group className="mb-3" controlId="adoptionFee">
@@ -114,6 +140,7 @@ export default function AddPets() {
           min={0}
           max={2000}
         />
+        <button onClick={savePetDetail}></button>
       </Form.Group>
     </Form>
   );
