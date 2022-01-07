@@ -4,7 +4,7 @@ import { useDispatch } from "react-redux";
 import PetCategory from "../../mock-constant/pet-category-constant.json";
 import dogs from "../../mock-constant/pet-category/dog-constant.json";
 //import cats from "../../mock-constant/pet-category/cats-constant.json";
-import {submitPetDetails} from "../../../store/slices/AddPetSlice";
+import { createPetDetails } from "../../../store/slices/AddPetSlice";
 import petgender from "../../mock-constant/pet-gender-constant.json";
 import petsize from "../../mock-constant/pet-size-contant.json";
 import DropDownField from "../../common/DropDownField/DropDownField";
@@ -35,7 +35,9 @@ export default function AddPets() {
   const savePetDetail = (event) => {
     event.preventDefault();
     setSubmitted(true);
-    dispatch(submitPetDetails(addPet));
+    dispatch(createPetDetails(addPet))
+      .unwrap()
+      .then((data) => console.log(data, "data"));
     console.log(submitted, addPet);
   };
 
@@ -174,9 +176,7 @@ export default function AddPets() {
           min={0}
           max={2000}
         />
-        <button onClick={savePetDetail}>
-          Submit
-        </button>
+        <button onClick={savePetDetail}>Submit</button>
       </Form.Group>
     </Form>
   );

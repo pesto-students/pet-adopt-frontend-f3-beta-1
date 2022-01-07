@@ -1,15 +1,23 @@
-import { createSlice } from "@reduxjs/toolkit";
+import { createSlice, createAsyncThunk } from "@reduxjs/toolkit";
+import petDataService from "../../api/petDataServices";
+
+const initialState = [];
+export const createPetDetails = createAsyncThunk(
+  "pets/create",
+  async (addPet) => {
+    const res = await petDataService.create(addPet);
+    return res.data;
+  }
+);
 
 const addPetDetailSlice = createSlice({
-  name: "addPetDetails",
-  initialState: {},
+  name: "PetDetails",
+  initialState,
   reducers: {
-    submitPetDetails(state, action) {
-      console.log(state, action.payload, "submitPetDetails slice");
+    [createPetDetails.fulfilled]: (state, action) => {
+      state.push(action.payload);
     },
   },
 });
-
-export const { submitPetDetails } = addPetDetailSlice.actions;
 
 export default addPetDetailSlice.reducer;

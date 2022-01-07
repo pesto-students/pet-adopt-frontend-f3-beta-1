@@ -14,4 +14,11 @@ function FetchLoginAuth(email, password) {
   return res;
 }
 
+export default axios.create({
+  baseURL: "http://localhost:5000",
+  headers: {
+    "Content-type": "application/json",
+  },
+});
+
 export { FetchLoginAuth };
