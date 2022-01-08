@@ -1,0 +1,52 @@
+.card {
+  position: absolute;
+  left: 11.37%;
+  right: 64.67%;
+  top: 48.04%;
+  bottom: 38.73%;
+
+  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
+    url("https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
+  mix-blend-mode: normal;
+  opacity: 0.9;
+  box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 10px;
+}
+
+.card-title {
+  position: absolute;
+  width: 174px;
+  height: 51px;
+  left: 150px;
+  top: 1536px;
+
+  font-family: Lato;
+  font-style: normal;
+  font-weight: 900;
+  font-size: 32.0315px;
+  line-height: 36px;
+  /* or 113% */
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  border-radius: 4.00393px;
+}
+
+.card-title-paragraph {
+  position: absolute;
+  width: 223.82px;
+  height: 56.25px;
+  left: 151px;
+  top: 1624px;
+
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.03em;
+
+  color: #ffffff;
+
+  border-radius: 4.00393px;
+}
