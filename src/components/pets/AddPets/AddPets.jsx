@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import axios from "axios";
-import { Form } from "react-bootstrap";
+import { Form, Row, Col, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import PetCategory from "../../mock-constant/pet-category-constant.json";
 import dogs from "../../mock-constant/pet-category/dog-constant.json";
@@ -72,26 +72,29 @@ export default function AddPets() {
   };
 
   return (
-    <Form>
-      <h2>Add Pet Details</h2>
-      <Form.Group className="mb-2" controlId="formName">
-        <Form.Label>Enter Pet Name</Form.Label>
-        <Form.Control
-          type="text"
-          name="petname"
-          placeholder="Enter Pet Name"
+    <Form style={{ width: "60%", margin: "0 20%" }}>
+      <h2 style={{ textAlign: "center" }}>Add Pet Details</h2>
+      <Row className="mb-3">
+        <Form.Group as={Col} controlId="formName">
+          <Form.Label>Enter Pet Name</Form.Label>
+          <Form.Control
+            type="text"
+            name="petname"
+            placeholder="Enter Pet Name"
+            onChange={handleInputChange}
+            required
+          />
+        </Form.Group>
+        <DropDownField
+          as={Col}
+          category={PetCategory}
+          type="Pet Category"
+          name="petcategory"
           onChange={handleInputChange}
-          required
         />
-      </Form.Group>
+      </Row>
 
-      <DropDownField
-        category={PetCategory}
-        type="Pet Category"
-        name="petcategory"
-        onChange={handleInputChange}
-      />
-      <Form.Group className="mb-2" controlId="upload image">
+      <Form.Group className="mb-3" controlId="upload image">
         <Form.Label>Upload Pet Image</Form.Label>
         <Form.Control
           type="file"
@@ -102,38 +105,42 @@ export default function AddPets() {
           required
         />
       </Form.Group>
-
-      <DropDownField
-        category={dogs}
-        type="Dogs"
-        name="selectedPet"
-        onChange={handleInputChange}
-        required
-      />
-      <DropDownField
-        category={petgender}
-        type="Gender"
-        name="gender"
-        onChange={handleInputChange}
-      />
-      <Form.Group className="mb-2" controlId="form age">
-        <Form.Label>Age</Form.Label>
-        <Form.Control
+      <Row className="mb-3">
+        <DropDownField
+          as={Col}
+          category={dogs}
+          type="Dogs"
+          name="selectedPet"
           onChange={handleInputChange}
-          type="number"
-          name="age"
-          placeholder="Age"
           required
-          min={0}
-          max={20}
         />
-      </Form.Group>
-      <DropDownField
-        category={petsize}
-        type="Size"
-        name="size"
-        onChange={handleInputChange}
-      />
+        <DropDownField
+          as={Col}
+          category={petgender}
+          type="Gender"
+          name="gender"
+          onChange={handleInputChange}
+        />
+        <Form.Group as={Col} controlId="form age">
+          <Form.Label>Age</Form.Label>
+          <Form.Control
+            onChange={handleInputChange}
+            type="number"
+            name="age"
+            placeholder="Age"
+            required
+            min={0}
+            max={20}
+          />
+        </Form.Group>
+        <DropDownField
+          as={Col}
+          category={petsize}
+          type="Size"
+          name="size"
+          onChange={handleInputChange}
+        />
+      </Row>
       <Form.Group className="mb-3" controlId="form about">
         <Form.Label>About</Form.Label>
         <Form.Control
@@ -144,29 +151,50 @@ export default function AddPets() {
           required
         />
       </Form.Group>
-      <SearchLocation
-        name="searchlocation"
-        style={{ width: "40%" }}
-        onChange={handleInputChange}
-        onPlaceSelected={onPlaceSelected}
-        onSelect={handleInputChange}
-        types={["(regions)"]}
-        componentRestrictions={{ country: "in" }}
-        required
-      />
-      <Form.Group className="mb-3" controlId="adoptionFee">
-        <Form.Label>Adoption Fee</Form.Label>
-        <Form.Control
-          name="adoptionFee"
-          type="number"
-          placeholder="Adoption Fee"
+      <Row className="mb-4">
+        <SearchLocation
+          as={Col}
+          name="searchlocation"
+          style={{
+            display: "block",
+            padding: " 0.375rem 0.75rem",
+            fontSize: " 1rem",
+            fontWeight: " 400",
+            lineHeight: " 1.5",
+            color: " #212529",
+            backgroundColor: " #fff",
+            backgroundClip: " padding-box",
+            border: " 1px solid #ced4da",
+            appearance: " none",
+            borderRadius: " 0.25rem",
+            transition:
+              " border-color .15s ease-in-out,box-shadow .15s ease-in-out",
+          }}
           onChange={handleInputChange}
+          onPlaceSelected={onPlaceSelected}
+          onSelect={handleInputChange}
+          types={["(regions)"]}
+          componentRestrictions={{ country: "in" }}
           required
-          min={0}
-          max={2000}
         />
-        <button onClick={savePetDetail}>Submit</button>
-      </Form.Group>
+        <Form.Group as={Col} controlId="adoptionFee">
+          <Form.Label>Adoption Fee</Form.Label>
+          <Form.Control
+            name="adoptionFee"
+            type="number"
+            placeholder="Adoption Fee"
+            onChange={handleInputChange}
+            required
+            min={0}
+            max={2000}
+          />
+        </Form.Group>
+        <Form.Group as={Col} controlId="adoptionFee">
+          <Button variant="primary" onClick={savePetDetail}>
+            Submit
+          </Button>
+        </Form.Group>
+      </Row>
     </Form>
   );
 }

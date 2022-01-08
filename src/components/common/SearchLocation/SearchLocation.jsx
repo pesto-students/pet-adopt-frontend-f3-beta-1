@@ -10,10 +10,11 @@ function SearchLocation({
   required,
   onChange,
   name,
+  as
 }) {
   return (
     <>
-      <Form.Group className="mb-3" controlId="searchLocation">
+      <Form.Group as={as} controlId="searchLocation">
         <Form.Label>Search Location</Form.Label>
         <Autocomplete
           name={name}
