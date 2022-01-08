@@ -11,6 +11,17 @@ import petsize from "../../mock-constant/pet-size-contant.json";
 import DropDownField from "../../common/DropDownField/DropDownField";
 import SearchLocation from "../../common/SearchLocation/SearchLocation";
 
+async function postImage({ image, description }) {
+  const formData = new FormData();
+  formData.append("image", image);
+  formData.append("description", description);
+
+  const result = await axios.post("/images", formData, {
+    headers: { "Content-Type": "multipart/form-data" },
+  });
+  console.log(result.data.Location);
+  return result.data;
+}
 export default function AddPets() {
   const initialAddPetState = {
     petname: "",
@@ -30,16 +41,6 @@ export default function AddPets() {
   //  image upload function
   const [file, setFile] = useState();
 
-  async function postImage({ image, description }) {
-    const formData = new FormData();
-    formData.append("image", image);
-    formData.append("description", description);
-
-    const result = await axios.post("/images", formData, {
-      headers: { "Content-Type": "multipart/form-data" },
-    });
-    return result.data;
-  }
 
   const handleImageChange = (event) => {
     event.preventDefault();
@@ -62,13 +63,13 @@ export default function AddPets() {
   const savePetDetail = async (event) => {
     event.preventDefault();
     setSubmitted(true);
-    const result = await postImage({ image: file });
-    setAddPet({ ...addPet, petimage: [result.image, ...addPet.petimage] });
-
-    dispatch(createPetDetails(addPet))
-      .unwrap()
-      .then((data) => console.log(data, "data"));
-    console.log(submitted, addPet);
+    const result = await postImage({ image: file,description: "image sent" });    
+    setAddPet({ ...addPet, petimage: [result.Location, ...addPet.petimage] });
+    console.log(addPet);
+    // dispatch(createPetDetails(addPet))
+    //   .unwrap()
+    //   .then((data) => console.log(data, "data"));
+    // console.log(submitted, addPet);
   };
 
   return (
@@ -152,7 +153,7 @@ export default function AddPets() {
         />
       </Form.Group>
       <Row className="mb-4">
-        <SearchLocation
+        {/* <SearchLocation
           as={Col}
           name="searchlocation"
           style={{
@@ -176,7 +177,7 @@ export default function AddPets() {
           types={["(regions)"]}
           componentRestrictions={{ country: "in" }}
           required
-        />
+        /> */}
         <Form.Group as={Col} controlId="adoptionFee">
           <Form.Label>Adoption Fee</Form.Label>
           <Form.Control
