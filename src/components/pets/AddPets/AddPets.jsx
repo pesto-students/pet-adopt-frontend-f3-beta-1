@@ -1,4 +1,5 @@
 import React, { useState } from "react";
+import axios from "axios";
 import { Form } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import PetCategory from "../../mock-constant/pet-category-constant.json";
@@ -14,7 +15,7 @@ export default function AddPets() {
   const initialAddPetState = {
     petname: "",
     petcategory: "Dogs",
-    petimage: "",
+    petimage: [],
     selectedPet: "",
     gender: "Male",
     age: "",
@@ -25,63 +26,51 @@ export default function AddPets() {
   };
   const [addPet, setAddPet] = useState(initialAddPetState);
   const [submitted, setSubmitted] = useState(false);
+
+  //  image upload function
+  const [file, setFile] = useState();
+
+  async function postImage({ image, description }) {
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("description", description);
+
+    const result = await axios.post("/images", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    return result.data;
+  }
+
+  const handleImageChange = (event) => {
+    event.preventDefault();
+    const file = event.target.files[0]; // get the file
+    setFile(file); // set the file
+  };
+
   const dispatch = useDispatch();
+
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setAddPet({ ...addPet, [name]: value });
     console.log(submitted, addPet);
   };
 
-  const savePetDetail = (event) => {
+  const onPlaceSelected = (place) => {
+    setAddPet({ ...addPet, searchlocation: place.formatted_address });
+  };
+
+  const savePetDetail = async (event) => {
     event.preventDefault();
     setSubmitted(true);
+    const result = await postImage({ image: file });
+    setAddPet({ ...addPet, petimage: [result.image, ...addPet.petimage] });
+
     dispatch(createPetDetails(addPet))
       .unwrap()
       .then((data) => console.log(data, "data"));
     console.log(submitted, addPet);
   };
 
-  const onPlaceSelected = (place) => {
-    setAddPet({ ...addPet, searchlocation: place.formatted_address });
-  };
-  const {
-    about,
-    adoptionFee,
-    age,
-    gender,
-    petcategory,
-    petimage,
-    petname,
-    searchlocation,
-    selectedPet,
-    size,
-  } = addPet;
-
-  let enableSubmit =
-    about &&
-    adoptionFee &
-      age &
-      gender &
-      petcategory &
-      petimage &
-      petname &
-      searchlocation &
-      selectedPet &
-      size;
-  console.log(
-    enableSubmit,
-    "dissableSubmit",
-    about,
-    adoptionFee,
-    age,
-    gender,
-    petcategory,
-    petimage,
-    petname,
-    searchlocation,
-    selectedPet,
-    size
-  );
   return (
     <Form>
       <h2>Add Pet Details</h2>
@@ -109,7 +98,7 @@ export default function AddPets() {
           name="petimage"
           placeholder="Enter Pet Name"
           accept="image/*"
-          onChange={handleInputChange}
+          onChange={handleImageChange}
           required
         />
       </Form.Group>
