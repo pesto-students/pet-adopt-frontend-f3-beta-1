@@ -1,4 +1,5 @@
 import React from "react";
+import DisplayPetDetails from "./pets/DisplayPetDetails"
 
 function About() {
   return (
@@ -23,6 +24,7 @@ function About() {
           </div>
         </div>
       </div>
+      <DisplayPetDetails />
     </div>
   );
 }

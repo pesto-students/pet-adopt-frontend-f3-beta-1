@@ -17,6 +17,7 @@ function Home() {
         credentials: "include",
       });
       const data = await res.json();
+      console.log(data);
       setUser(data);
       if(res.status!==200 || !data){
         const error = new Error(res.error);

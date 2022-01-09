@@ -3,9 +3,17 @@ import petDataService from "../../api/petDataServices";
 
 const initialState = [];
 export const createPetDetails = createAsyncThunk(
-  "pets/create",
+  "/createpet",
   async (addPet) => {
     const res = await petDataService.create(addPet);
+    return res.data;
+  }
+);
+
+export const fetchPetDetails = createAsyncThunk(
+  "/fetchpet",
+  async (addPet) => {
+    const res = await petDataService.getAll(addPet);
     return res.data;
   }
 );
@@ -15,6 +23,9 @@ const addPetDetailSlice = createSlice({
   initialState,
   reducers: {
     [createPetDetails.fulfilled]: (state, action) => {
+      state.push(action.payload);
+    },
+    [fetchPetDetails.fulfilled]: (state, action) => {
       state.push(action.payload);
     },
   },

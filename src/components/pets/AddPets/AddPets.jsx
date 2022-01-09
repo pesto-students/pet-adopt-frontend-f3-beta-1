@@ -42,10 +42,12 @@ export default function AddPets() {
   const [file, setFile] = useState();
 
 
-  const handleImageChange = (event) => {
+  const handleImageChange = async (event) => {
     event.preventDefault();
     const file = event.target.files[0]; // get the file
     setFile(file); // set the file
+    const result = await postImage({ image: file,description: "image sent" });    
+    setAddPet({ ...addPet, petimage: [result.Key, ...addPet.petimage] });
   };
 
   const dispatch = useDispatch();
@@ -60,16 +62,14 @@ export default function AddPets() {
     setAddPet({ ...addPet, searchlocation: place.formatted_address });
   };
 
-  const savePetDetail = async (event) => {
+  const savePetDetail =(event) => {
     event.preventDefault();
-    setSubmitted(true);
-    const result = await postImage({ image: file,description: "image sent" });    
-    setAddPet({ ...addPet, petimage: [result.Location, ...addPet.petimage] });
+    setSubmitted(true);    
     console.log(addPet);
-    // dispatch(createPetDetails(addPet))
-    //   .unwrap()
-    //   .then((data) => console.log(data, "data"));
-    // console.log(submitted, addPet);
+    dispatch(createPetDetails(addPet))
+      // .unwrap()
+      // .then((data) => console.log(data, "data"));
+    console.log(submitted, addPet);
   };
 
   return (
@@ -190,7 +190,7 @@ export default function AddPets() {
             max={2000}
           />
         </Form.Group>
-        <Form.Group as={Col} controlId="adoptionFee">
+        <Form.Group as={Row} controlId="adoptionFee">
           <Button variant="primary" onClick={savePetDetail}>
             Submit
           </Button>

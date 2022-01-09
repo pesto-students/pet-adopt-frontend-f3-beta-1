@@ -1,7 +1,7 @@
 import http from "./api";
 
 const getAll = () => {
-  return http.get("/pets");
+  return http.get("/fetchpet");
 };
 
 const get = (id) => {
@@ -9,7 +9,7 @@ const get = (id) => {
 };
 
 const create = (data) => {
-  return http.post("/pets", data);
+  return http.post("/createpet", data);
 };
 
 const update = (id, data) => {
