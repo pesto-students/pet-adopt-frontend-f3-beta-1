@@ -1,0 +1,23 @@
+.wrapper {
+}
+
+.card_wrapper {
+  margin: 10% auto;
+  width: 50%;
+  height: 40%;
+  left: 12px;
+  top: 21px;
+  background: #effbff;
+  border: 1px solid #c4c4c4;
+  box-sizing: border-box;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+.card_image {
+  width: 250px;
+  height: 250px;
+  left: 0px;
+  top: 0px;
+  border-radius: 12px;
+}
