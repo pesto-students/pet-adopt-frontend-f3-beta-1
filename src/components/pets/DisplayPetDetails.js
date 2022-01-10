@@ -8,7 +8,7 @@ function DisplayPetDetails() {
     const dispatch = useDispatch();
     const displayPet = (event) =>{
         event.preventDefault()
-        dispatch(fetchPetDetails)
+        dispatch(fetchPetDetails())
         .then(data=>console.log(data))
     }
 

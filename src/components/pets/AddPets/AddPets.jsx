@@ -9,7 +9,8 @@ import { createPetDetails } from "../../../store/slices/AddPetSlice";
 import petgender from "../../mock-constant/pet-gender-constant.json";
 import petsize from "../../mock-constant/pet-size-contant.json";
 import DropDownField from "../../common/DropDownField/DropDownField";
-import SearchLocation from "../../common/SearchLocation/SearchLocation";
+// import SearchLocation from "../../common/SearchLocation/SearchLocation";
+
 
 async function postImage({ image, description }) {
   const formData = new FormData();
@@ -32,7 +33,6 @@ export default function AddPets() {
     age: "",
     size: "Large",
     about: "",
-    searchlocation: "",
     adoptionFee: "",
   };
   const [addPet, setAddPet] = useState(initialAddPetState);
@@ -58,9 +58,9 @@ export default function AddPets() {
     console.log(submitted, addPet);
   };
 
-  const onPlaceSelected = (place) => {
-    setAddPet({ ...addPet, searchlocation: place.formatted_address });
-  };
+  // const onPlaceSelected = (place) => {
+  //   setAddPet({ ...addPet, searchlocation: place.formatted_address });
+  // };
 
   const savePetDetail =(event) => {
     event.preventDefault();

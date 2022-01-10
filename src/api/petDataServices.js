@@ -1,5 +1,13 @@
 import http from "./api";
 
+const signUpUser = (body) => {
+  console.log(body, "bodyyyyyyy");
+  const { name, email, phone, work, password, cpassword } = body;
+  return http.post("/signup", {
+    body: JSON.stringify({ name, email, phone, work, password, cpassword }),
+  });
+};
+
 const getAll = () => {
   return http.get("/fetchpet");
 };
@@ -36,6 +44,7 @@ const petDataService = {
   remove,
   removeAll,
   findByTitle,
+  signUpUser,
 };
 
 export default petDataService;
