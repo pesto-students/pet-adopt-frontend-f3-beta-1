@@ -3,9 +3,7 @@ import http from "./api";
 const signUpUser = (body) => {
   console.log(body, "bodyyyyyyy");
   const { name, email, phone, work, password, cpassword } = body;
-  return http.post("/signup", {
-    body: JSON.stringify({ name, email, phone, work, password, cpassword }),
-  });
+  return http.post("/signup",body);
 };
 
 const getAll = () => {

@@ -28,7 +28,7 @@ function SignUp() {
     e.preventDefault();
 
     const { name, email, phone, work, password, cpassword } = user;
-    const res = await dispatch(
+    const res = dispatch(
       signUpUser({ name, email, phone, work, password, cpassword })
     );
     // const res = await fetch("/signup", {
@@ -39,17 +39,19 @@ function SignUp() {
     //   body: JSON.stringify({ name, email, phone, work, password, cpassword }),
     // });
 
-    const data = await res;
-    console.log(data);
-
-    if (data.message === "User registered successfully!!!") {
-      window.alert("Registration Successful!!");
-      console.log(data, userDetails, "userDetails");
-      navigate("/");
-    } else {
-      console.log(data, userDetails, "userDetails");
-      window.alert("Registeration failed");
-    }
+    res
+    .then(data => {
+      console.log(data.payload,"signup.jsx")
+      if (data.payload === 201) {
+        window.alert("Registration Successful!!");
+        console.log(data, userDetails, "userDetails");
+        navigate("/");
+      } else {
+        console.log(data, userDetails, "userDetails");
+        window.alert("Registeration failed");
+      }
+  });
+    // console.log(data);
   }
 
   return (

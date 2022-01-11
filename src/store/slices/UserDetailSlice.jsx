@@ -4,7 +4,8 @@ import petDataService from "../../api/petDataServices";
 const initialState = [];
 export const signUpUser = createAsyncThunk("/signup", async (signUpUser) => {
   const res = await petDataService.signUpUser(signUpUser);
-  return res.data;
+  console.log(res.status);
+  return res.status;
 });
 
 export const fetchPetDetails = createAsyncThunk("/fetchpet", async (addPet) => {
