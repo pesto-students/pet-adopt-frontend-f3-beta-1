@@ -48,7 +48,7 @@ function Home() {
           </div>
           <div className="col-lg-5">
             <h1 className="font-weight-light">Dashboard</h1>
-            <h1>Wel Come {user.name}</h1>            
+            <h1>Welcome {user.name}</h1>            
           </div>
         </div>
       </div>

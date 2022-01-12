@@ -1,8 +1,8 @@
 import React from "react";
 import styles from "./DisplayPetCard.module.css";
 
-function DisplayPetCard({about,petname,size,age,selectedPet,adoptionFee,gender}) {
-  console.log(about,petname,size,age,selectedPet,adoptionFee,gender);
+function DisplayPetCard({about,petname,petimages=[{image:''}],size,age,selectedPet,adoptionFee,gender}) {
+  console.log(about,petimages,petname,size,age,selectedPet,adoptionFee,gender);
   return (
     <card className={styles.wrapper}>
       <div className={styles.card_wrapper}>
@@ -10,7 +10,7 @@ function DisplayPetCard({about,petname,size,age,selectedPet,adoptionFee,gender})
           <div className={styles.card_image}>
             <img
               className={styles.card_image}
-              src="https://media.geeksforgeeks.org/wp-content/uploads/20210425000233/test-300x297.png"
+              src={"/images/"+petimages[0].image}
               alt="pet"
             />
           </div>
@@ -27,7 +27,6 @@ function DisplayPetCard({about,petname,size,age,selectedPet,adoptionFee,gender})
             </div>
             <div className={styles.card_footer}>
               <span className={styles.card_footer_amount}>{adoptionFee}</span>
-              <span className={styles.card_footer_location}>Location</span>
               <span className={styles.card_footer_send_request}>
                 <span>Send Request</span>
               </span>
