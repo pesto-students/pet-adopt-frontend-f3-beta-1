@@ -1,7 +1,8 @@
 import React from "react";
 import styles from "./DisplayPetCard.module.css";
 
-function DisplayPetCard() {
+function DisplayPetCard({about,petname,size,age,selectedPet,adoptionFee,gender}) {
+  console.log(about,petname,size,age,selectedPet,adoptionFee,gender);
   return (
     <card className={styles.wrapper}>
       <div className={styles.card_wrapper}>
@@ -15,18 +16,17 @@ function DisplayPetCard() {
           </div>
           <div className={styles.card_details}>
             <div className={styles.card_title}>
-              <span className={styles.card_title_name}>Max</span>
-              <span className={styles.card_title_breed}>Breed</span>
-              <span className={styles.card_title_gender}>Gender</span>
+              <span className={styles.card_title_name}>{petname}</span>
+              <span className={styles.card_title_breed}>{selectedPet}</span>
+              <span className={styles.card_title_gender}>{gender}</span>
             </div>
             <div className={styles.card_paragraph}>
               <p>
-                The German Shepherd personality is aloof but not usually
-                aggressive. They're reserved dogs.
+                {about}
               </p>
             </div>
             <div className={styles.card_footer}>
-              <span className={styles.card_footer_amount}>5000</span>
+              <span className={styles.card_footer_amount}>{adoptionFee}</span>
               <span className={styles.card_footer_location}>Location</span>
               <span className={styles.card_footer_send_request}>
                 <span>Send Request</span>
