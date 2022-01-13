@@ -3,8 +3,7 @@ import axios from "axios";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
 import PetCategory from "../../mock-constant/pet-category-constant.json";
-import dogs from "../../mock-constant/pet-category/dog-constant.json";
-//import cats from "../../mock-constant/pet-category/cats-constant.json";
+import petList from "../../mock-constant/pet-category/pet-list-constant.json";
 import { createPetDetails } from "../../../store/slices/AddPetSlice";
 import petgender from "../../mock-constant/pet-gender-constant.json";
 import petsize from "../../mock-constant/pet-size-contant.json";
@@ -38,14 +37,13 @@ export default function AddPets() {
   const [addPet, setAddPet] = useState(initialAddPetState);
   const [submitted, setSubmitted] = useState(false);
 
-  //  image upload function
   const [file, setFile] = useState();
 
-
+  //  image upload to state  function
   const handleImageChange = async (event) => {
     event.preventDefault();
     const file = event.target.files[0]; // get the file
-    setFile(file); // set the file
+    setFile(...file); // set the file
     const result = await postImage({ image: file,description: "image sent" });    
     setAddPet({ ...addPet, petimage: [result.Key, ...addPet.petimage] });
   };
@@ -109,8 +107,8 @@ export default function AddPets() {
       <Row className="mb-3">
         <DropDownField
           as={Col}
-          category={dogs}
-          type="Dogs"
+          category={petList}
+          type={addPet.petcategory}
           name="selectedPet"
           onChange={handleInputChange}
           required
