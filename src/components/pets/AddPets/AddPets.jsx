@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Form, Row, Col, Button } from "react-bootstrap";
 import { useDispatch } from "react-redux";
@@ -11,17 +11,7 @@ import DropDownField from "../../common/DropDownField/DropDownField";
 // import SearchLocation from "../../common/SearchLocation/SearchLocation";
 
 
-async function postImage({ image, description }) {
-  const formData = new FormData();
-  formData.append("image", image);
-  formData.append("description", description);
-
-  const result = await axios.post("/images", formData, {
-    headers: { "Content-Type": "multipart/form-data" },
-  });
-  console.log(result.data.Location);
-  return result.data;
-}
+const tempImageKeys = [];
 export default function AddPets() {
   const initialAddPetState = {
     petname: "",
@@ -33,20 +23,49 @@ export default function AddPets() {
     size: "Large",
     about: "",
     adoptionFee: "",
+    adoptedBy: "ttt",
   };
   const [addPet, setAddPet] = useState(initialAddPetState);
   const [submitted, setSubmitted] = useState(false);
 
-  const [file, setFile] = useState();
+  const [files, setFiles] = useState([]);
+
+  async function postImage({ image, description }) {
+    const formData = new FormData();
+    formData.append("image", image);
+    formData.append("description", description);
+  
+    const result = await axios.post("/images", formData, {
+      headers: { "Content-Type": "multipart/form-data" },
+    });
+    console.log(result.data.Key);
+    tempImageKeys.push(result.data.Key);
+    console.log(tempImageKeys);
+    // console.log(addPet);
+    setAddPet({ ...addPet, petimage: tempImageKeys });
+    // console.log(addPet);
+    return result.data;
+  }
 
   //  image upload to state  function
   const handleImageChange = async (event) => {
     event.preventDefault();
     const file = event.target.files[0]; // get the file
-    setFile(...file); // set the file
-    const result = await postImage({ image: file,description: "image sent" });    
-    setAddPet({ ...addPet, petimage: [result.Key, ...addPet.petimage] });
+    setFiles([...files,file]); // set the file
+    // const result = await postImage({ image: file,description: "image sent" });    
+    // setAddPet({ ...addPet, petimage: [result.Key, ...addPet.petimage] });
   };
+
+  const handleImageUpload = async () => {
+    const imageKeys = files.map(async (file) =>{
+      await postImage({ image: file,description: "image sent" });    
+    })
+    // console.log(await (async() => 'hello')())
+    // await ( async () =>setAddPet({ ...addPet, petimage: tempImageKeys }))();    
+    // console.log(tempImageKeys);      
+  }
+
+  useEffect(() =>{console.log(addPet);},[addPet])
 
   const dispatch = useDispatch();
 
@@ -58,7 +77,7 @@ export default function AddPets() {
 
   // const onPlaceSelected = (place) => {
   //   setAddPet({ ...addPet, searchlocation: place.formatted_address });
-  // };
+  // };  
 
   const savePetDetail =(event) => {
     event.preventDefault();
@@ -104,6 +123,11 @@ export default function AddPets() {
           required
         />
       </Form.Group>
+      <Form.Group as={Row} controlId="adoptionFee">
+          <Button variant="primary" onClick={handleImageUpload}>
+            Submit
+          </Button>
+        </Form.Group>
       <Row className="mb-3">
         <DropDownField
           as={Col}
@@ -193,6 +217,7 @@ export default function AddPets() {
             Submit
           </Button>
         </Form.Group>
+        
       </Row>
     </Form>
   );
