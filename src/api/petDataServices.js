@@ -2,8 +2,15 @@ import http from "./api";
 
 const signUpUser = (body) => {
   console.log(body, "bodyyyyyyy");
-  const { name, email, phone, work, password, cpassword } = body;
   return http.post("/signup",body);
+};
+
+const login = () => {
+  return http.get("/dashboard",{headers: {
+    Accept: "application/json",
+    "Content-Type": "application/json"
+  },
+  credentials: "include",});
 };
 
 const getAll = () => {
@@ -43,6 +50,7 @@ const petDataService = {
   removeAll,
   findByTitle,
   signUpUser,
+  login,
 };
 
 export default petDataService;

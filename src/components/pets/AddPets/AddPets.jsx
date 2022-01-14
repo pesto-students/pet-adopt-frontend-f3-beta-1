@@ -14,6 +14,7 @@ import DropDownField from "../../common/DropDownField/DropDownField";
 const tempImageKeys = [];
 export default function AddPets() {
   const initialAddPetState = {
+    userId: "",
     petname: "",
     petcategory: "Dogs",
     petimage: [],
@@ -42,8 +43,8 @@ export default function AddPets() {
     tempImageKeys.push(result.data.Key);
     console.log(tempImageKeys);
     // console.log(addPet);
-    setAddPet({ ...addPet, petimage: tempImageKeys });
-    // console.log(addPet);
+    setAddPet({ ...addPet, petimage: [...addPet.petimage,result.data.Key] });
+    console.log(addPet);
     return result.data;
   }
 
@@ -57,9 +58,11 @@ export default function AddPets() {
   };
 
   const handleImageUpload = async () => {
-    const imageKeys = files.map(async (file) =>{
-      await postImage({ image: file,description: "image sent" });    
-    })
+
+    for(let i=0;i<=files.length;i++) {
+      console.log(files);
+      await postImage({ image: files[i],description: "image sent" },addPet);    
+    }
     // console.log(await (async() => 'hello')())
     // await ( async () =>setAddPet({ ...addPet, petimage: tempImageKeys }))();    
     // console.log(tempImageKeys);      

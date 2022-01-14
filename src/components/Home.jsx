@@ -1,37 +1,44 @@
 import React, { useEffect, useState } from "react";
+import { useDispatch } from 'react-redux';
 import {useNavigate} from 'react-router-dom'
+import {loggedInUser} from '../store/slices/LoggedInUserDataSlice'
 
 
 function Home() {
   const navigate = useNavigate();
   const [user,setUser] = useState({})
+  const dispatch = useDispatch();
+
 
   const callHomePage = async () => {
-    try{
-      const res = await fetch("/dashboard",{
-        method: "GET",
-        headers: {
-          Accept: "application/json",
-          "Content-Type": "application/json"
-        },
-        credentials: "include",
-      });
-      const data = await res.json();
-      console.log(data);
-      setUser(data);
-      if(res.status!==200 || !data){
-        const error = new Error(res.error);
-        throw error;
-      }
-    }    
-    catch(e){
-      console.log(e);
-      navigate('/login')
-    }
+    await dispatch(loggedInUser())
+    .then(data=>{console.log(data,"data");})
   }
+  //   try{
+  //     const res = await fetch("/dashboard",{
+  //       method: "GET",
+  //       headers: {
+  //         Accept: "application/json",
+  //         "Content-Type": "application/json"
+  //       },
+  //       credentials: "include",
+  //     });
+  //     const data = await res.json();
+  //     console.log(data);
+  //     setUser(data);
+  //     if(res.status!==200 || !data){
+  //       const error = new Error(res.error);
+  //       throw error;
+  //     }
+  //   }    
+  //   catch(e){
+  //     console.log(e);
+  //     navigate('/login')
+  //   }
+  // }
 
   useEffect(() =>{
-    callHomePage();    
+    callHomePage();
   },[])
 
   return (
