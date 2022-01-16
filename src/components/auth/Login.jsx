@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import { FetchLoginAuth } from "../../api/api.js";
 
 
-function Login(handleLoginClose) {
+function Login({handleLoginClose}) {
   const navigate = useNavigate();
   const [user, setUser] = useState({ email: "", password: "" });
 
@@ -28,7 +28,7 @@ function Login(handleLoginClose) {
     if (data.status === 200) {
       window.alert("Login done...");
       navigate("/home");
-      // handleLoginClose();
+      handleLoginClose();
     } else {
       window.alert("Login failed");
     }

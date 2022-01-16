@@ -20,10 +20,10 @@ function Navigation1({handleLoginShow}) {
       );
     }
     else{
-      return <>
-        <Nav.Link onClick={handleLoginShow} href="/login">Login</Nav.Link>
+      return (<>
+        <Nav.Link onClick={handleLoginShow} ><Link to="/login" >Login</Link></Nav.Link>
         <Nav.Link href="/signup">Sign Up</Nav.Link>
-      </>
+      </>);
     }
   };
 
