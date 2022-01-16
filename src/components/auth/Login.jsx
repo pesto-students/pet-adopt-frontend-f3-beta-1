@@ -28,7 +28,7 @@ function Login(handleLoginClose) {
     if (data.status === 200) {
       window.alert("Login done...");
       navigate("/home");
-      handleLoginClose();
+      // handleLoginClose();
     } else {
       window.alert("Login failed");
     }

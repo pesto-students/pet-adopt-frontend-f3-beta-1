@@ -1,5 +1,6 @@
 import { useSelector } from 'react-redux';
 import { Navbar,Container,Nav,NavDropdown } from "react-bootstrap"
+import { Link } from 'react-router-dom';
 
 function Navigation1({handleLoginShow}) {
   const state = useSelector(state=>state.loggedInUserDetails);
@@ -10,8 +11,8 @@ function Navigation1({handleLoginShow}) {
       return (
         <NavDropdown title={state[0].name} id="basic-nav-dropdown">
           <NavDropdown.Item href="">My Account</NavDropdown.Item>
-          <NavDropdown.Item href="/about">My Pets</NavDropdown.Item>
-          <NavDropdown.Item href="/contact">Add Pet</NavDropdown.Item>
+          <NavDropdown.Item ><Link to="/about" >My Pet</Link></NavDropdown.Item>
+          <NavDropdown.Item ><Link to="/contact" >Add Pet</Link></NavDropdown.Item>
           <NavDropdown.Item href="">All Requests</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>

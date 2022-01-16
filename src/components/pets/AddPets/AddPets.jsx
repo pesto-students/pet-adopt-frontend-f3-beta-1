@@ -1,7 +1,7 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import { Form, Row, Col, Button } from "react-bootstrap";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import PetCategory from "../../mock-constant/pet-category-constant.json";
 import petList from "../../mock-constant/pet-category/pet-list-constant.json";
 import { createPetDetails } from "../../../store/slices/AddPetSlice";
@@ -11,8 +11,9 @@ import DropDownField from "../../common/DropDownField/DropDownField";
 // import SearchLocation from "../../common/SearchLocation/SearchLocation";
 const tempImageKeys = [];
 export default function AddPets() {
+  const state = useSelector(state => state.loggedInUserDetails)
   const initialAddPetState = {
-    userId: "",
+    userId: state[0]._id,
     petname: "",
     petcategory: "Dogs",
     petimage: [],
