@@ -29,7 +29,8 @@ function Logout() {
         }
       
         useEffect(() =>{
-            callLogoutPage();    
+            callLogoutPage();
+            // eslint-disable-next-line
         },[])
     return (
         <>

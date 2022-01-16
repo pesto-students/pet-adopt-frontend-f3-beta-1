@@ -21,7 +21,8 @@ function DisplayPetDetails() {
 
   useEffect(() =>{
     console.log("About page called");
-    callPetDetailPage();    
+    callPetDetailPage();
+    // eslint-disable-next-line
   },[]);
 
   return (    
