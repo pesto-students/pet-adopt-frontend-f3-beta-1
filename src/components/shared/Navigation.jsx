@@ -33,7 +33,7 @@ function Navigation() {
               </li>
               <li className="nav-item">
                 <NavLink style={{color: 'white'}} className="nav-link" to="/logout">
-                  Logout
+                  Sign Up
                 </NavLink>
               </li>
             </ul>

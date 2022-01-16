@@ -9,8 +9,6 @@ import petgender from "../../mock-constant/pet-gender-constant.json";
 import petsize from "../../mock-constant/pet-size-contant.json";
 import DropDownField from "../../common/DropDownField/DropDownField";
 // import SearchLocation from "../../common/SearchLocation/SearchLocation";
-
-
 const tempImageKeys = [];
 export default function AddPets() {
   const initialAddPetState = {
@@ -27,15 +25,13 @@ export default function AddPets() {
     adoptedBy: "ttt",
   };
   const [addPet, setAddPet] = useState(initialAddPetState);
+  const [displayImageName, setDisplayImageName] = useState();
   const [submitted, setSubmitted] = useState(false);
-
   const [files, setFiles] = useState([]);
-
   async function postImage({ image, description }) {
     const formData = new FormData();
     formData.append("image", image);
     formData.append("description", description);
-  
     const result = await axios.post("/images", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
@@ -43,55 +39,74 @@ export default function AddPets() {
     tempImageKeys.push(result.data.Key);
     console.log(tempImageKeys);
     // console.log(addPet);
-    setAddPet({ ...addPet, petimage: [...addPet.petimage,result.data.Key] });
+    setAddPet({ ...addPet, petimage: [...addPet.petimage, result.data.Key] });
     console.log(addPet);
     return result.data;
   }
-
   //  image upload to state  function
   const handleImageChange = async (event) => {
     event.preventDefault();
     const file = event.target.files[0]; // get the file
-    setFiles([...files,file]); // set the file
-    // const result = await postImage({ image: file,description: "image sent" });    
+    await setFiles([...files, file]); // set the file
+    // image thumbnail after upload
+    console.log(files, "filessssssssss");
+    // const result = await postImage({ image: file,description: "image sent" });
     // setAddPet({ ...addPet, petimage: [result.Key, ...addPet.petimage] });
   };
-
   const handleImageUpload = async () => {
-
-    for(let i=0;i<=files.length;i++) {
+    for (let i = 0; i <= files.length; i++) {
       console.log(files);
-      await postImage({ image: files[i],description: "image sent" },addPet);    
+      await postImage({ image: files[i], description: "image sent" }, addPet);
     }
     // console.log(await (async() => 'hello')())
-    // await ( async () =>setAddPet({ ...addPet, petimage: tempImageKeys }))();    
-    // console.log(tempImageKeys);      
-  }
-
-  useEffect(() =>{console.log(addPet);},[addPet])
-
+    // await ( async () =>setAddPet({ ...addPet, petimage: tempImageKeys }))();
+    // console.log(tempImageKeys);
+  };
+  const removeImage = (imageName) => {
+    console.log(imageName);
+    const items = files.filter((image) => image.name !== imageName);
+    console.log(items);
+    setFiles(items);
+  };
+  useEffect(() => {
+    let imageThumbnailName = files.map((image, index) => {
+      return (
+        <div tabIndex={0} key={image.name} style={{ display: "flex" }}>
+          <li
+            style={{ border: "1px solid red", margin: "10px" }}
+            key={image.name}
+          >
+            {image.name}
+          </li>
+          <button onClick={() => removeImage(image.name)}>Button</button>
+        </div>
+      );
+    });
+    setDisplayImageName(imageThumbnailName);
+    // console.log(
+    //   <li>imageThumbnailName</li>,
+    //   imageThumbnailName,
+    //   "imageThumbnailName",
+    //   displayImageName,
+    //   files
+    // );
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [files || displayImageName]);
   const dispatch = useDispatch();
-
   const handleInputChange = (event) => {
     const { name, value } = event.target;
     setAddPet({ ...addPet, [name]: value });
     console.log(submitted, addPet);
   };
-
-  // const onPlaceSelected = (place) => {
-  //   setAddPet({ ...addPet, searchlocation: place.formatted_address });
-  // };  
-
-  const savePetDetail =(event) => {
+  const savePetDetail = (event) => {
     event.preventDefault();
-    setSubmitted(true);    
+    setSubmitted(true);
     console.log(addPet);
-    dispatch(createPetDetails(addPet))
-      // .unwrap()
-      // .then((data) => console.log(data, "data"));
+    dispatch(createPetDetails(addPet));
+    // .unwrap()
+    // .then((data) => console.log(data, "data"));
     console.log(submitted, addPet);
   };
-
   return (
     <Form style={{ width: "60%", margin: "0 20%" }}>
       <h2 style={{ textAlign: "center" }}>Add Pet Details</h2>
@@ -114,7 +129,6 @@ export default function AddPets() {
           onChange={handleInputChange}
         />
       </Row>
-
       <Form.Group className="mb-3" controlId="upload image">
         <Form.Label>Upload Pet Image</Form.Label>
         <Form.Control
@@ -124,13 +138,15 @@ export default function AddPets() {
           accept="image/*"
           onChange={handleImageChange}
           required
+          multiple
         />
       </Form.Group>
+      <div>{displayImageName}</div>
       <Form.Group as={Row} controlId="adoptionFee">
-          <Button variant="primary" onClick={handleImageUpload}>
-            Submit
-          </Button>
-        </Form.Group>
+        <Button variant="primary" onClick={handleImageUpload}>
+          Submit
+        </Button>
+      </Form.Group>
       <Row className="mb-3">
         <DropDownField
           as={Col}
@@ -190,7 +206,7 @@ export default function AddPets() {
             color: " #212529",
             backgroundColor: " #fff",
             backgroundClip: " padding-box",
-            border: " 1px solid #ced4da",
+            border: " 1px solid #CED4DA",
             appearance: " none",
             borderRadius: " 0.25rem",
             transition:
@@ -220,7 +236,6 @@ export default function AddPets() {
             Submit
           </Button>
         </Form.Group>
-        
       </Row>
     </Form>
   );

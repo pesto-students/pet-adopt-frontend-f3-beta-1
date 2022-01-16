@@ -21,7 +21,8 @@ export const fetchPetDetails = createAsyncThunk(
 const addPetDetailSlice = createSlice({
   name: "PetDetails",
   initialState,
-  reducers: {
+  reducers: {},
+  extraReducers: {
     [createPetDetails.fulfilled]: (state, action) => {
       state.push(action.payload);
     },

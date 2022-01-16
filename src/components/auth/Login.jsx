@@ -3,7 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Button, Form } from "react-bootstrap";
 import { FetchLoginAuth } from "../../api/api.js";
 
-function Login() {
+
+function Login(handleLoginClose) {
   const navigate = useNavigate();
   const [user, setUser] = useState({ email: "", password: "" });
 
@@ -27,6 +28,7 @@ function Login() {
     if (data.status === 200) {
       window.alert("Login done...");
       navigate("/home");
+      handleLoginClose();
     } else {
       window.alert("Login failed");
     }
@@ -36,15 +38,7 @@ function Login() {
     <div className="login">
       <div className="container">
         <div className="row align-items-center my-5">
-          <div className="col-lg-7">
-            <img
-              className="img-fluid rounded mb-4 mb-lg-0"
-              src="http://placehold.it/900x400"
-              alt=""
-            />
-          </div>
           <div className="col-lg-5">
-            <h1 className="font-weight-light">Login</h1>
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>

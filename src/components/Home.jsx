@@ -12,30 +12,15 @@ function Home() {
 
   const callHomePage = async () => {
     await dispatch(loggedInUser())
-    .then(data=>{console.log(data,"data");})
+    .then(data=>{
+      console.log(data,"data");
+      setUser(data.payload);
+    })
+    .catch(err => {
+      console.log(err);
+      navigate("/login");
+    })
   }
-  //   try{
-  //     const res = await fetch("/dashboard",{
-  //       method: "GET",
-  //       headers: {
-  //         Accept: "application/json",
-  //         "Content-Type": "application/json"
-  //       },
-  //       credentials: "include",
-  //     });
-  //     const data = await res.json();
-  //     console.log(data);
-  //     setUser(data);
-  //     if(res.status!==200 || !data){
-  //       const error = new Error(res.error);
-  //       throw error;
-  //     }
-  //   }    
-  //   catch(e){
-  //     console.log(e);
-  //     navigate('/login')
-  //   }
-  // }
 
   useEffect(() =>{
     callHomePage();

@@ -16,7 +16,8 @@ export const fetchPetDetails = createAsyncThunk("/fetchpet", async (addPet) => {
 const signUpUserSlice = createSlice({
   name: "userSignUp",
   initialState,
-  reducers: {
+  reducers: {},
+  extraReducers: {
     [signUpUser.fulfilled]: (state, action) => {
       state.push(action.payload);
     },

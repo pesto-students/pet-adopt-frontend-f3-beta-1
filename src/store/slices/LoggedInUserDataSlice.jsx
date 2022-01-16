@@ -5,15 +5,17 @@ const initialState = [];
 export const loggedInUser = createAsyncThunk("/dashboard", async () => {
   const res = await petDataService.login();
   console.log(res);
-  return res;
+  return res.data;
 });
 
 const loggedInUserSlice = createSlice({
   name: "loggedInUser",
   initialState,
-  reducers: {
+  reducers: {},
+  extraReducers: {
     [loggedInUser.fulfilled]: (state, action) => {
       state.push(action.payload);
+      console.log(action.payload,action.type,state);
     },
   },
 });
