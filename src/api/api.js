@@ -4,7 +4,7 @@ function FetchLoginAuth(email, password) {
   console.log(email, password, "email, password");
   const res = axios({
     method: "post",
-    url: "/signin",
+    url: "https://petpalbackend.herokuapp.com/signin",
     headers: {
       "Content-Type": "application/json",
     },
@@ -15,7 +15,7 @@ function FetchLoginAuth(email, password) {
 }
 
 export default axios.create({
-  // baseURL: "http://localhost:5000",
+  baseURL: "https://petpalbackend.herokuapp.com/",
   headers: {
     "Content-type": "application/json",
   },
