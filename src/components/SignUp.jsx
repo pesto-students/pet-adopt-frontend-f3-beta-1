@@ -1,8 +1,7 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { signUpUser } from "../store/slices/UserDetailSlice";
 import { useSelector, useDispatch } from "react-redux";
-import state from "../store/store";
 
 function SignUp() {
   const navigate = useNavigate();

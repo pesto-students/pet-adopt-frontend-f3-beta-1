@@ -1,6 +1,6 @@
 import React,{ useState } from "react";
 import "./index.css";
-import { Modal, Button } from "react-bootstrap"
+import { Modal } from "react-bootstrap"
 import { BrowserRouter as Router, Route, Routes } from "react-router-dom";
 import {  
   Header,
