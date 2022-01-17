@@ -1,7 +1,6 @@
 import axios from "axios";
 
 function FetchLoginAuth(email, password) {
-  console.log(email, password, "email, password");
   const res = axios({
     method: "post",
     url: "https://petpalbackend.herokuapp.com/signin",
