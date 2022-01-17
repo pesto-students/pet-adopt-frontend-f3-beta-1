@@ -22,7 +22,7 @@ function Login({handleLoginClose}) {
 
     const res = await FetchLoginAuth(email, password);
     console.log(res, "res");
-    const data = await res;
+    const data = res;
     console.log(data);
 
     if (data.status === 200) {
