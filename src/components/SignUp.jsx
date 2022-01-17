@@ -30,13 +30,6 @@ function SignUp() {
     const res = dispatch(
       signUpUser({ name, email, phone, work, password, cpassword })
     );
-    // const res = await fetch("/signup", {
-    //   method: "POST",
-    //   headers: {
-    //     "Content-Type": "application/json",
-    //   },
-    //   body: JSON.stringify({ name, email, phone, work, password, cpassword }),
-    // });
 
     res
     .then(data => {
