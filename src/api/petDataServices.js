@@ -6,15 +6,24 @@ const signUpUser = (body) => {
 };
 
 const login = () => {
-  return http.get("/dashboard",{headers: {
-    Accept: "application/json",
-    "Content-Type": "application/json"
-  },
-  credentials: "include",});
+  return http.get("/dashboard");
 };
 
-const getAll = () => {
-  return http.get("/fetchpet");
+const getAll = (userId) => {
+  console.log(userId);
+  return http.get("/fetchpet",userId);
+};
+
+const getAllPets = (userId) => {
+  return http.get("/fetchallpet",userId);
+};
+
+const sendRequest = (body) => {
+  return http.post("/sendrequest",body);
+};
+
+const petInDetail = (id) => {
+  return http.get("/petindetail",id);
 };
 
 const get = (id) => {
@@ -51,6 +60,9 @@ const petDataService = {
   findByTitle,
   signUpUser,
   login,
+  getAllPets,
+  sendRequest,
+  petInDetail,
 };
 
 export default petDataService;

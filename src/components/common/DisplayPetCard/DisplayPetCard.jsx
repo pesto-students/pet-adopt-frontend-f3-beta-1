@@ -1,13 +1,60 @@
 import React from "react";
 import styles from "./DisplayPetCard.module.css";
+import { useDispatch, useSelector } from 'react-redux';
+import { sendRequest } from "../../../store/slices/AddPetSlice";
+import { petInDetail } from "../../../store/slices/PetInDetailSlice";
+import {useNavigate} from 'react-router-dom'
+import { Card } from "react-bootstrap";
 
-function DisplayPetCard({about,petname,petimages=[{image:''}],size,age,selectedPet,adoptionFee,gender}) {
-  console.log(about,petimages,petname,size,age,selectedPet,adoptionFee,gender);
+
+// import {loggedInUser} from "../../../store/slices/LoggedInUserDataSlice"
+
+function DisplayPetCard({userId, _id,about,petname,petimages=[{image:''}],requests=[],selectedPet,adoptionFee,gender}) {
+  console.log(requests);
+  const state = useSelector(state=>state.loggedInUserDetails);
+  const dispatch = useDispatch();
+  const navigate = useNavigate();
+
+  const handlePetClick = async () => {
+    window.alert("PetClicked "+_id);
+    dispatch(petInDetail(_id))
+    .then(data =>navigate("/petindetail"))
+  }
+
+  const handleSendRequest = async () => {
+    window.alert("PetClicked "+_id);
+    dispatch(sendRequest({_id,userId}))
+    .then(data => {
+      console.log(data)
+      navigate("/petindetail")
+      })
+    .catch(err => console.log(err));
+  }
+
+  function userExists(uid) {
+    return requests.some(function(el) {
+      return el.userId === uid;
+    }); 
+  }
+
+  const RequestButton = () => {
+    if(userId===state[0]._id){
+      return <span onClick={handlePetClick} >{requests.length} Request{requests.length>1 ? "s" : null}</span>
+    }
+    else if(userExists(userId)){
+      return <span>Request Sent</span>
+    }
+    else{
+      return <span onClick={handleSendRequest}>Send Request</span>      
+    }
+  }
+
+  const aboutTrim = about.slice(0,70)+"..."
   return (
-    <card className={styles.wrapper}>
+    <Card key={_id} className={styles.wrapper}>
       <div className={styles.card_wrapper}>
         <div style={{ display: "flex" }}>
-          <div className={styles.card_image}>
+          <div onClick={handlePetClick} className={styles.card_image}>
             <img
               className={styles.card_image}
               src={"/images/"+petimages[0].image}
@@ -22,19 +69,19 @@ function DisplayPetCard({about,petname,petimages=[{image:''}],size,age,selectedP
             </div>
             <div className={styles.card_paragraph}>
               <p>
-                {about}
+                {aboutTrim}
               </p>
             </div>
             <div className={styles.card_footer}>
               <span className={styles.card_footer_amount}>{adoptionFee}</span>
               <span className={styles.card_footer_send_request}>
-                <span>Send Request</span>
+                <RequestButton />
               </span>
             </div>
           </div>
         </div>
       </div>
-    </card>
+    </Card>
   );
 }
 

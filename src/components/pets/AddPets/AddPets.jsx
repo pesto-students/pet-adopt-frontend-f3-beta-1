@@ -8,6 +8,8 @@ import { createPetDetails } from "../../../store/slices/AddPetSlice";
 import petgender from "../../mock-constant/pet-gender-constant.json";
 import petsize from "../../mock-constant/pet-size-contant.json";
 import DropDownField from "../../common/DropDownField/DropDownField";
+import { useNavigate } from "react-router-dom";
+
 // import SearchLocation from "../../common/SearchLocation/SearchLocation";
 const tempImageKeys = [];
 export default function AddPets() {
@@ -29,6 +31,8 @@ export default function AddPets() {
   const [displayImageName, setDisplayImageName] = useState();
   const [submitted, setSubmitted] = useState(false);
   const [files, setFiles] = useState([]);
+  const navigate =useNavigate();
+
   async function postImage({ image, description }) {
     const formData = new FormData();
     formData.append("image", image);
@@ -40,7 +44,7 @@ export default function AddPets() {
     tempImageKeys.push(result.data.Key);
     console.log(tempImageKeys);
     // console.log(addPet);
-    setAddPet({ ...addPet, petimage: [...addPet.petimage, result.data.Key] });
+    setAddPet({ ...addPet, petimage: tempImageKeys });
     console.log(addPet);
     return result.data;
   }
@@ -55,7 +59,7 @@ export default function AddPets() {
     // setAddPet({ ...addPet, petimage: [result.Key, ...addPet.petimage] });
   };
   const handleImageUpload = async () => {
-    for (let i = 0; i <= files.length; i++) {
+    for (let i = 0; i < files.length; i++) {
       console.log(files);
       await postImage({ image: files[i], description: "image sent" }, addPet);
     }
@@ -99,14 +103,16 @@ export default function AddPets() {
     setAddPet({ ...addPet, [name]: value });
     console.log(submitted, addPet);
   };
-  const savePetDetail = (event) => {
+  const savePetDetail = async (event) => {
     event.preventDefault();
     setSubmitted(true);
     console.log(addPet);
+    handleImageUpload();
     dispatch(createPetDetails(addPet));
     // .unwrap()
     // .then((data) => console.log(data, "data"));
     console.log(submitted, addPet);
+    navigate('/about')
   };
   return (
     <Form style={{ width: "60%", margin: "0 20%" }}>

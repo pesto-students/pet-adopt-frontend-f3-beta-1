@@ -36,9 +36,7 @@ function Login({handleLoginClose}) {
 
   return (
     <div className="login">
-      <div className="container">
-        <div className="row align-items-center my-5">
-          <div className="col-lg-5">
+      
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>
@@ -74,9 +72,6 @@ function Login({handleLoginClose}) {
                 Sign Up
               </Button>
             </Form>
-          </div>
-        </div>
-      </div>
     </div>
   );
 }

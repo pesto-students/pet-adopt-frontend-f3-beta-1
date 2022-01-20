@@ -11,6 +11,7 @@ import {
   SignUp,
   About,
   Contact,
+  PetDetails,
   } from "./components/index";
 
 function App() {
@@ -32,9 +33,10 @@ function App() {
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/login" element={<Login handleLoginClose = {handleLoginClose} />} />
+      {/* <Route path="/login" element={<Login handleLoginClose = {handleLoginClose} />} /> */}
       <Route path="/logout" element={<Logout />} />
       <Route path="/signup" element={<SignUp />} />
+      <Route path="/petindetail" element={<PetDetails />} />
     </Routes>
     {/* <Button variant="primary" onClick={handleLoginShow}>
         Login

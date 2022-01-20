@@ -1,34 +1,37 @@
 import React,{ useEffect, useState } from "react";
-import { fetchPetDetails } from "../../store/slices/MyPetsSlice";
+import { fetchAllPetDetails } from "../../store/slices/AddPetSlice";
 import { useDispatch } from "react-redux";
-import {useNavigate} from 'react-router-dom'
 import DisplayPetCard from "../../components/common/DisplayPetCard/DisplayPetCard"
-import { useSelector } from 'react-redux';
 
 function DisplayPetDetails() {
-  const navigate = useNavigate();
   const [pets,setPets] = useState([])
   const dispatch = useDispatch();
-  const state = useSelector(state=>state.loggedInUserDetails);
+  const [mounted, setMounted] = useState(true);
 
-  const callPetDetailPage = async () => {   
-    await dispatch(fetchPetDetails(state[0]._id))
+  const callPetDetailPage = async () => {
+    console.log("all pets details")
+    setMounted(true);
+    await dispatch(fetchAllPetDetails())
     .then(data=>{
       console.log(data.payload)
-      setPets(data.payload);
+      if(mounted){
+        setPets(data.payload);
+      }
     })
-    .catch(err=>{console.log(err);
-      navigate('/login')})   
+    .catch(err=>console.log(err))
   }
 
   useEffect(() =>{
+    console.log("About page called");
     callPetDetailPage();
+    return () => {setMounted(false)};
     // eslint-disable-next-line
   },[]);
 
   return (
     <div>
       {pets.map(pet =>{ return <DisplayPetCard
+      key={pet._id}
       {...pet}
       />})}  
     </div>

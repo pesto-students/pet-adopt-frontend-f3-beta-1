@@ -10,10 +10,26 @@ export const createPetDetails = createAsyncThunk(
   }
 );
 
-export const fetchPetDetails = createAsyncThunk(
-  "/fetchpet",
-  async (addPet) => {
-    const res = await petDataService.getAll(addPet);
+export const fetchAllPetDetails = createAsyncThunk(
+  "/fetchallpet",
+  async (userId) => {
+    const res = await petDataService.getAllPets(userId);
+    return res.data;
+  }
+);
+
+export const sendRequest = createAsyncThunk(
+  "/sendrequest",
+  async (_id,userId) => {
+    const res = await petDataService.sendRequest(_id,userId);
+    return res.data;
+  }
+);
+
+export const petInDetail = createAsyncThunk(
+  "/petindetail",
+  async (_id,userId) => {
+    const res = await petDataService.petInDetail(_id,userId);
     return res.data;
   }
 );
@@ -26,7 +42,13 @@ const addPetDetailSlice = createSlice({
     [createPetDetails.fulfilled]: (state, action) => {
       state.push(action.payload);
     },
-    [fetchPetDetails.fulfilled]: (state, action) => {
+    [fetchAllPetDetails.fulfilled]: (state, action) => {
+      state.push(action.payload);
+    },
+    [sendRequest.fulfilled]: (state, action) => {
+      state.push(action.payload);
+    },
+    [petInDetail.fulfilled]: (state, action) => {
       state.push(action.payload);
     },
   },
