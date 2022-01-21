@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { signUpUser } from "../store/slices/UserDetailSlice";
 import { useSelector, useDispatch } from "react-redux";
 
-function SignUp() {
+function SignUp({handleSignUpClose}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [user, setUser] = useState({
@@ -38,6 +38,7 @@ function SignUp() {
         window.alert("Registration Successful!!");
         console.log(data, userDetails, "userDetails");
         navigate("/");
+        handleSignUpClose();
       } else {
         console.log(data, userDetails, "userDetails");
         window.alert("Registeration failed");
@@ -50,13 +51,6 @@ function SignUp() {
     <div className="login">
       <div className="container">
         <div className="row align-items-center my-5">
-          <div className="col-lg-7">
-            <img
-              className="img-fluid rounded mb-4 mb-lg-0"
-              src="http://placehold.it/900x400"
-              alt=""
-            />
-          </div>
           <div className="col-lg-5">
             <h1 className="font-weight-light">Sign Up</h1>
             <form method="post" className="form">

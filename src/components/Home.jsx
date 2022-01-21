@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { useDispatch } from 'react-redux';
 import {loggedInUser} from '../store/slices/LoggedInUserDataSlice'
-import DisplayAllPets from './pets/DisplayAllPets'
 
 
 function PetDetails() {
@@ -43,7 +42,7 @@ function PetDetails() {
       </div>
     </div>
     </form>
-    <DisplayAllPets />
+    {/* <DisplayAllPets /> */}
     </>
   );
 }

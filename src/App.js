@@ -15,49 +15,52 @@ import {
   } from "./components/index";
 
 function App() {
-  const [show, setShow] = useState(false);
+  const [showLogin, setShowLogin] = useState(false);
+  const [showSignUp, setShowSignUp] = useState(false);
 
   const handleLoginClose = () => {
-    setShow(false)
+    setShowLogin(false)
   };
   const handleLoginShow = () => {
-    console.log("show: "+ show);
-    setShow(true)
+    setShowLogin(true)
+  };
+
+  const handleSignUpClose = () => {
+    setShowSignUp(false)
+  };
+  const handleSignUpShow = () => {
+    setShowSignUp(true)
   };
   return (
     <Router>
     <Header 
       handleLoginShow = {handleLoginShow}
+      handleSignUpShow = {handleSignUpShow}
     />
     <Routes>
       <Route path="/home" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
-      {/* <Route path="/login" element={<Login handleLoginClose = {handleLoginClose} />} /> */}
       <Route path="/logout" element={<Logout />} />
-      <Route path="/signup" element={<SignUp />} />
       <Route path="/petindetail" element={<PetDetails />} />
     </Routes>
-    {/* <Button variant="primary" onClick={handleLoginShow}>
-        Login
-      </Button> */}
-
       <Modal aria-labelledby="contained-modal-title-vcenter"
-      centered show={show} onHide={handleLoginClose}>
+      centered show={showLogin} onHide={handleLoginClose}>
         <Modal.Header closeButton>
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Login
           handleLoginClose = {handleLoginClose}                  
         />
-        <Modal.Footer>
-          {/* <Button variant="secondary" onClick={handleClose}>
-            Close
-          </Button>
-          <Button variant="primary" onClick={handleClose}>
-            Save Changes
-          </Button> */}
-        </Modal.Footer>
+      </Modal>
+      <Modal aria-labelledby="contained-modal-title-vcenter"
+      centered show={showSignUp} onHide={handleSignUpClose}>
+        <Modal.Header closeButton>
+          <Modal.Title>Sign Up</Modal.Title>
+        </Modal.Header>
+        <SignUp
+          handleSignUpClose = {handleSignUpClose}                  
+        />
       </Modal>
     <Footer />
   </Router>

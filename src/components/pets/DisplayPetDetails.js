@@ -27,11 +27,11 @@ function DisplayPetDetails() {
   },[]);
 
   return (
-    <div>
+    <>
       {pets.map(pet =>{ return <DisplayPetCard
       {...pet}
       />})}  
-    </div>
+    </>
   );
 }
 

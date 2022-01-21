@@ -1,7 +1,6 @@
 import http from "./api";
 
 const signUpUser = (body) => {
-  console.log(body, "bodyyyyyyy");
   return http.post("/signup",body);
 };
 
@@ -10,7 +9,6 @@ const login = () => {
 };
 
 const getAll = (userId) => {
-  console.log(userId);
   return http.get("/fetchpet",userId);
 };
 

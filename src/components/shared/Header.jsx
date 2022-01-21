@@ -1,11 +1,12 @@
 import React from 'react'
 import Navigation1 from './Navigation1'
 import { Carousel } from 'react-bootstrap'
-function Header({handleLoginShow}) {
+function Header({handleLoginShow,handleSignUpShow}) {
     return (<>
         {/* <Navigation /> */}
         <Navigation1 
-          handleLoginShow ={handleLoginShow}        
+          handleLoginShow ={handleLoginShow}
+          handleSignUpShow = {handleSignUpShow}        
         />
         <Carousel className="my-carousel">
         <Carousel.Item>
