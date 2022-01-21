@@ -4,7 +4,7 @@ import { Button, Form } from "react-bootstrap";
 import { FetchLoginAuth } from "../../api/api.js";
 
 
-function Login({handleLoginClose}) {
+function Login({handleLoginClose, handleLoginSignUpToggle}) {
   const navigate = useNavigate();
   const [user, setUser] = useState({ email: "", password: "" });
 
@@ -68,7 +68,7 @@ function Login({handleLoginClose}) {
               <Button variant="primary" onClick={handleLogin}>
                 Login
               </Button>{" "}
-              <Button variant="primary" onClick={() => navigate("/signup")}>
+              <Button variant="primary" onClick={handleLoginSignUpToggle}>
                 Sign Up
               </Button>
             </Form>

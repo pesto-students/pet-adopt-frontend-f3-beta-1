@@ -9,7 +9,7 @@ function Navigation1({handleLoginShow,handleSignUpShow}) {
   const NavLinks = () => {
     if (state.length) {
       return (
-        <NavDropdown bg="none" title={state[0].name} id="basic-nav-dropdown">
+        <NavDropdown styles="{{background-color: transparent}}" bg="none" title={state[0].name} id="basic-nav-dropdown">
           <NavDropdown.Item href="">My Account</NavDropdown.Item>
           <NavDropdown.Item ><Link to="/about" >My Pet</Link></NavDropdown.Item>
           <NavDropdown.Item ><Link to="/contact" >Add Pet</Link></NavDropdown.Item>

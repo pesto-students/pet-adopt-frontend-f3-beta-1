@@ -19,12 +19,12 @@ function Logout() {
                 navigate('/login');
             }
             if(data.status!==200){
-                navigate('/login');
+                navigate('/home');
             }
           }    
           catch(e){
             console.log(e);
-            navigate('/login')
+            navigate('/home')
           }
         }
       

@@ -3,7 +3,7 @@ import { useNavigate } from "react-router-dom";
 import { signUpUser } from "../store/slices/UserDetailSlice";
 import { useSelector, useDispatch } from "react-redux";
 
-function SignUp({handleSignUpClose}) {
+function SignUp({handleSignUpClose, handleLoginSignUpToggle}) {
   const navigate = useNavigate();
   const dispatch = useDispatch();
   const [user, setUser] = useState({
@@ -114,6 +114,14 @@ function SignUp({handleSignUpClose}) {
                   name="signup"
                   value="Register"
                   onClick={handlePost}
+                />
+              </div>
+              <div className="form">
+                <input
+                  type="button"
+                  name="login"
+                  value="Login"
+                  onClick={handleLoginSignUpToggle}
                 />
               </div>
             </form>

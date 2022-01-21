@@ -25,6 +25,13 @@ function App() {
     setShowLogin(true)
   };
 
+  const handleLoginSignUpToggle = () => {
+    const shLogin = showLogin;
+    const shSignUp = showSignUp;
+    setShowLogin(!shLogin);
+    setShowSignUp(!shSignUp);
+  }
+
   const handleSignUpClose = () => {
     setShowSignUp(false)
   };
@@ -32,13 +39,14 @@ function App() {
     setShowSignUp(true)
   };
   return (
-    <Router>
+  <Router>
     <Header 
       handleLoginShow = {handleLoginShow}
       handleSignUpShow = {handleSignUpShow}
     />
     <Routes>
       <Route path="/home" element={<Home />} />
+      <Route exact path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/logout" element={<Logout />} />
@@ -50,7 +58,8 @@ function App() {
           <Modal.Title>Login</Modal.Title>
         </Modal.Header>
         <Login
-          handleLoginClose = {handleLoginClose}                  
+          handleLoginClose = {handleLoginClose}
+          handleLoginSignUpToggle = {handleLoginSignUpToggle}
         />
       </Modal>
       <Modal aria-labelledby="contained-modal-title-vcenter"
@@ -59,7 +68,8 @@ function App() {
           <Modal.Title>Sign Up</Modal.Title>
         </Modal.Header>
         <SignUp
-          handleSignUpClose = {handleSignUpClose}                  
+          handleSignUpClose = {handleSignUpClose}
+          handleLoginSignUpToggle = {handleLoginSignUpToggle}                  
         />
       </Modal>
     <Footer />
