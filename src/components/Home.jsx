@@ -2,6 +2,8 @@ import React, { useEffect } from "react";
 import { useDispatch } from "react-redux";
 import { loggedInUser } from "../store/slices/LoggedInUserDataSlice";
 import PopularCategory from "./pets/PopularCategory/PopularCategory";
+import MostLikedPets from "./pets/MostLikedPets/MostLikedPets";
+
 
 function PetDetails() {
   const dispatch = useDispatch();
@@ -24,6 +26,7 @@ function PetDetails() {
   return (
     <>
       <PopularCategory />
+      <MostLikedPets />
       {/* <DisplayAllPets /> */}
     </>
   );
