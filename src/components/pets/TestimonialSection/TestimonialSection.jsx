@@ -6,7 +6,7 @@ import { Row } from "react-bootstrap";
 function TestimonialSection() {
   return (
     <div>
-      <div>
+      <div className={styles.grid_container_h1_div}>
         <div className={styles.grid_container_h1}>Testimonials</div>
       </div>
       <Row className={styles.grid_container}>

@@ -4,7 +4,13 @@
 }
 
 .grid_container_h1 {
-  width: 80%;
-  margin-left: 12%;
-  margin-left: 10rem;
+  width: 63%;
+  margin: auto;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 28px;
+  line-height: 33px;
+  color: #000000;
+  margin-bottom: 3rem;
 }

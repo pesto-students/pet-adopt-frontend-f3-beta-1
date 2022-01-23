@@ -6,7 +6,9 @@ import { Row } from "react-bootstrap";
 function MostLikedPets() {
   return (
     <div>
-      <h2>MostLikedCard</h2>
+      <div className={styles.grid_container_h1}>
+        <div>MostLikedCard</div>
+      </div>
       <Row className={styles.grid_container}>
         <MostLikedCard />
         <MostLikedCard />

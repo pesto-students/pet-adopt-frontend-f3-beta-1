@@ -3,6 +3,11 @@
   margin: auto;
 }
 
+ .grid_container_h1_div{
+  width: 60%;
+  margin-bottom: 2rem;
+}
+
 .grid_container_h1 {
   width: 63%;
   margin: auto;
