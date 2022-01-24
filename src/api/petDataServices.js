@@ -20,6 +20,10 @@ const sendRequest = (body) => {
   return http.post("/sendrequest",body);
 };
 
+const handleLike = (body) => {
+  return http.post("/like",body);
+};
+
 const petInDetail = (_id) => {
   return http.get(`/petindetail/${_id}`);
 };
@@ -61,6 +65,7 @@ const petDataService = {
   getAllPets,
   sendRequest,
   petInDetail,
+  handleLike,
 };
 
 export default petDataService;

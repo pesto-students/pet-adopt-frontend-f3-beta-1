@@ -7,3 +7,4 @@ export { default as SignUp } from "./SignUp";
 export { default as About } from "./About";
 export { default as Contact } from "./Contact";
 export { default as PetDetails } from "./pets/PetDetails"
+export { default as DisplayAllPets} from "./pets/DisplayAllPets"

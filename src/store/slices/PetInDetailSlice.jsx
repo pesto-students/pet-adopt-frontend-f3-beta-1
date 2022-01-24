@@ -12,12 +12,23 @@ export const petInDetail = createAsyncThunk(
   }
 );
 
+export const handleLike = createAsyncThunk(
+  "/like",
+  async (_id,userId) => {
+    const res = await petDataService.handleLike(_id,userId);
+    return res.data;
+  }
+);
+
 const petInDetailSlice = createSlice({
   name: "PetInDetail",
   initialState,
   reducers: {},
   extraReducers: {
     [petInDetail.fulfilled]: (state, action) => {
+      return action.payload
+    },
+    [handleLike.fulfilled]: (state, action) => {
       return action.payload
     },
   },

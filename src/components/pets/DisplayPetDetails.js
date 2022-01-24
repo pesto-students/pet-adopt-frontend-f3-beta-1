@@ -28,9 +28,7 @@ function DisplayPetDetails() {
 
   return (
     <>
-      {pets.map(pet =>{ return <DisplayPetCard
-      {...pet}
-      />})}  
+      {pets.map(pet => <DisplayPetCard {...pet}  />)}  
     </>
   );
 }

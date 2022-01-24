@@ -12,6 +12,7 @@ import {
   About,
   Contact,
   PetDetails,
+  DisplayAllPets,
   } from "./components/index";
 
 function App() {
@@ -51,6 +52,8 @@ function App() {
       <Route path="/contact" element={<Contact />} />
       <Route path="/logout" element={<Logout />} />
       <Route path="/petindetail" element={<PetDetails />} />
+      <Route path="/category/:category" element={<DisplayAllPets />} />
+      
     </Routes>
       <Modal aria-labelledby="contained-modal-title-vcenter"
       centered show={showLogin} onHide={handleLoginClose}>

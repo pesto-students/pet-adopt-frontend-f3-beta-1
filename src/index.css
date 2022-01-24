@@ -20,15 +20,13 @@ code {
 }
 
 .my-nav{
-  position: absolute;
+  /* position: absolute; */
   z-index: 999;
   width: 100%;
   background-color: blue;
 }
 
-.my-carousel{
-  width: 80%;
+.pet-carousel{
   margin-left: 10em;
   margin-right: 10em;
 }
-

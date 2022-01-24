@@ -6,7 +6,7 @@ function CarouselPics() {
       <Carousel className="my-carousel">
         <Carousel.Item>
           <img
-            className="d-block w-100"
+            className="d-block w-100 img-container"
             src="https://www.owntheyard.com/wp-content/uploads/2019/10/puppy.jpg"
             alt="First slide"
           />

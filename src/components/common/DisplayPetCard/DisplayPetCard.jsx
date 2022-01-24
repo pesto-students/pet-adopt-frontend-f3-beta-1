@@ -4,7 +4,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import { sendRequest } from "../../../store/slices/AddPetSlice";
 import { petInDetail } from "../../../store/slices/PetInDetailSlice";
 import {useNavigate} from 'react-router-dom'
-import { Card } from "react-bootstrap";
+import { Card,Button } from "react-bootstrap";
 
 
 // import {loggedInUser} from "../../../store/slices/LoggedInUserDataSlice"
@@ -40,13 +40,13 @@ function DisplayPetCard({userId, _id,about,petname,petimages=[{image:''}],reques
 
   const RequestButton = () => {
     if(userId===state[0]._id){
-      return <span onClick={handlePetClick} >{requests.length} Request{requests.length>1 ? "s" : null}</span>
+      return <Button onClick={handlePetClick} >{requests.length} Request{requests.length>1 ? "s" : null}</Button>
     }
     else if(userExists(userId)){
-      return <span>Request Sent</span>
+      return <Button>Request Sent</Button>
     }
     else{
-      return <span onClick={handleSendRequest}>Send Request</span>      
+      return <Button onClick={handleSendRequest}>Send Request</Button>      
     }
   }
 

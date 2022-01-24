@@ -122,7 +122,8 @@ export default function AddPets() {
     // .then((data) => console.log(data, "data"));
   };
   return (
-    <Form style={{ width: "60%", margin: "0 20%" }}>
+    <div>
+    <Form style={{ width: "60%", margin: "20px 20%" }}>
       <h2 style={{ textAlign: "center" }}>Add Pet Details</h2>
       <Row className="mb-3">
         <Form.Group as={Col} controlId="formName">
@@ -252,5 +253,6 @@ export default function AddPets() {
         </Form.Group>
       </Row>
     </Form>
+    </div>
   );
 }
