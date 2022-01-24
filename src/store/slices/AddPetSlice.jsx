@@ -26,14 +26,6 @@ export const sendRequest = createAsyncThunk(
   }
 );
 
-export const petInDetail = createAsyncThunk(
-  "/petindetail",
-  async (_id,userId) => {
-    const res = await petDataService.petInDetail(_id,userId);
-    return res.data;
-  }
-);
-
 const addPetDetailSlice = createSlice({
   name: "PetDetails",
   initialState,
@@ -46,9 +38,6 @@ const addPetDetailSlice = createSlice({
       state.push(action.payload);
     },
     [sendRequest.fulfilled]: (state, action) => {
-      state.push(action.payload);
-    },
-    [petInDetail.fulfilled]: (state, action) => {
       state.push(action.payload);
     },
   },

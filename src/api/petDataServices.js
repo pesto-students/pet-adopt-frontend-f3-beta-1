@@ -20,8 +20,8 @@ const sendRequest = (body) => {
   return http.post("/sendrequest",body);
 };
 
-const petInDetail = (id) => {
-  return http.get("/petindetail",id);
+const petInDetail = (_id) => {
+  return http.get(`/petindetail/${_id}`);
 };
 
 const get = (id) => {

@@ -18,7 +18,7 @@ const petInDetailSlice = createSlice({
   reducers: {},
   extraReducers: {
     [petInDetail.fulfilled]: (state, action) => {
-      state.update(action.payload);
+      return action.payload
     },
   },
 });
