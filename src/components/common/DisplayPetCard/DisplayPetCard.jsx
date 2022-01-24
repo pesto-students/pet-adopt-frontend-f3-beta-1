@@ -11,6 +11,7 @@ import { Card } from "react-bootstrap";
 
 function DisplayPetCard({userId, _id,about,petname,petimages=[{image:''}],requests=[],selectedPet,adoptionFee,gender}) {
   console.log(requests);
+  const imageKey = petimages.length ? petimages[0].image : "1309b1565d06708b4a1660de6d7078de";
   const state = useSelector(state=>state.loggedInUserDetails);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -57,7 +58,7 @@ function DisplayPetCard({userId, _id,about,petname,petimages=[{image:''}],reques
           <div onClick={handlePetClick} className={styles.card_image}>
             <img
               className={styles.card_image}
-              src={"/images/"+petimages[0].image}
+              src={"/images/"+imageKey}
               alt="pet"
             />
           </div>

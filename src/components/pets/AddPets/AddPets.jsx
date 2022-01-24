@@ -33,10 +33,11 @@ export default function AddPets() {
   const [files, setFiles] = useState([]);
   const navigate =useNavigate();
 
-  async function postImage({ image, description }) {
+  async function postImage({ image, petId }) {
     const formData = new FormData();
+    console.log(petId);
     formData.append("image", image);
-    formData.append("description", description);
+    formData.append("petId", petId);
     const result = await axios.post("/images", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
@@ -44,7 +45,7 @@ export default function AddPets() {
     tempImageKeys.push(result.data.Key);
     console.log(tempImageKeys);
     // console.log(addPet);
-    setAddPet({ ...addPet, petimage: tempImageKeys });
+    // setAddPet({ ...addPet, petimage: tempImageKeys });
     console.log(addPet);
     return result.data;
   }
@@ -52,17 +53,18 @@ export default function AddPets() {
   const handleImageChange = async (event) => {
     event.preventDefault();
     const file = event.target.files[0]; // get the file
-    await setFiles([...files, file]); // set the file
+    setFiles([...files, file]); // set the file
     // image thumbnail after upload
     console.log(files, "filessssssssss");
     // const result = await postImage({ image: file,description: "image sent" });
     // setAddPet({ ...addPet, petimage: [result.Key, ...addPet.petimage] });
   };
-  const handleImageUpload = async () => {
+  const handleImageUpload = async (petId) => {
     for (let i = 0; i < files.length; i++) {
       console.log(files);
-      await postImage({ image: files[i], description: "image sent" }, addPet);
+      await postImage({ image: files[i], petId: petId });
     }
+    // dispatch(createPetDetails(addPet));
     // console.log(await (async() => 'hello')())
     // await ( async () =>setAddPet({ ...addPet, petimage: tempImageKeys }))();
     // console.log(tempImageKeys);
@@ -107,12 +109,17 @@ export default function AddPets() {
     event.preventDefault();
     setSubmitted(true);
     console.log(addPet);
-    handleImageUpload();
-    dispatch(createPetDetails(addPet));
+    dispatch(createPetDetails(addPet))
+    .then(data =>{
+      console.log(data.payload.data._id);
+      handleImageUpload(data.payload.data._id);
+    })
+    .then(() =>{
+      console.log(submitted, addPet);
+      navigate('/about')      
+    })
     // .unwrap()
     // .then((data) => console.log(data, "data"));
-    console.log(submitted, addPet);
-    navigate('/about')
   };
   return (
     <Form style={{ width: "60%", margin: "0 20%" }}>
@@ -149,11 +156,11 @@ export default function AddPets() {
         />
       </Form.Group>
       <div>{displayImageName}</div>
-      <Form.Group as={Row} controlId="adoptionFee">
+      {/* <Form.Group as={Row} controlId="adoptionFee">
         <Button variant="primary" onClick={handleImageUpload}>
           Submit
         </Button>
-      </Form.Group>
+      </Form.Group> */}
       <Row className="mb-3">
         <DropDownField
           as={Col}
