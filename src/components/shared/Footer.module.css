@@ -1,0 +1,78 @@
+.footer_subscribe_container {
+  padding: 3rem;
+  left: 54.34%;
+  right: 9.6%;
+  top: 84.92%;
+  bottom: 6.62%;
+  background: rgba(32, 60, 134, 0.05);
+  mix-blend-mode: normal;
+  width: 415.45px;
+  height: 239px;
+}
+
+.footer_subscribe_container_title {
+  left: 58.82%;
+  right: 33.28%;
+  top: 85.97%;
+  bottom: 13.11%;
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: bold;
+  font-size: 16px;
+  line-height: 28px;
+  color: #0a142f;
+}
+
+.allign_footer {
+  margin-top: 3rem;
+}
+
+.email_input_field {
+  left: 58.82%;
+  right: 14.72%;
+  top: 87.38%;
+  bottom: 10.98%;
+  background: #ffffff;
+  border: 1.5px solid #e7e8f2;
+  box-sizing: border-box;
+  border-radius: 6px;
+  width: 243.37px;
+  height: 46.32px;
+}
+
+.email_submit_button {
+  left: 79.95%;
+  right: 14.72%;
+  top: 87.38%;
+  bottom: 10.98%;
+  /* Lift Blue */
+  background: #0081fe;
+  border-radius: 8px;
+  height: 46.32px;
+  text-align: center;
+  padding-top: 0.6rem;
+  width: 61.46px;
+}
+
+.email_input_button_container {
+  display: flex;
+}
+
+ul {
+  list-style: none;
+  padding: 0;
+}
+
+.li_style {
+  height: 36.43px;
+  left: 11.81%;
+  right: 83.55%;
+  top: calc(50% - 36.43px / 2 + 1067.93px);
+  font-family: Roboto;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 16px;
+  line-height: 19px;
+  color: #0a142f;
+  opacity: 0.5;
+}
