@@ -34,13 +34,14 @@
   align-items: center;
   color: #ffffff;
   border-radius: 4.00393px;
+  margin-bottom: 1.5rem;
 }
 
 .card_title_paragraph {
   width: 223.82px;
   height: 56.25px;
 
-  font-family: Roboto;
+  font-family: Roboto;  
   font-style: normal;
   font-weight: 500;
   font-size: 18px;

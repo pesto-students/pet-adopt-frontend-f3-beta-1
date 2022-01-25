@@ -13,7 +13,7 @@ function Footer() {
   return (
     <>
       <footer>
-        <div className="container">
+        <div className={`container ${styles.style_contianer}`}>
           <div className="row">
             <div className="col-12 col-lg-10 mx-auto">
               <div className="row">
@@ -59,14 +59,14 @@ function Footer() {
                   </div>
                 </div>
               </div>
-              <hr />
-              <div className="mt-5">
-                <p className="main-hero-para text-center w-100">
-                  Copyright &copy; PetPal 2021
-                </p>
-              </div>
             </div>
           </div>
+        </div>
+        <hr />
+        <div className="mt-5">
+          <p className="main-hero-para text-center w-100">
+            Copyright &copy; PetPal 2021
+          </p>
         </div>
       </footer>
     </>

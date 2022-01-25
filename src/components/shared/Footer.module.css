@@ -1,3 +1,8 @@
+.style_contianer{
+  width: 75%;
+    margin-top: 1rem;
+}
+
 .footer_subscribe_container {
   padding: 3rem;
   left: 54.34%;
@@ -56,6 +61,7 @@
 
 .email_input_button_container {
   display: flex;
+  padding-bottom: 0.5rem;
 }
 
 ul {
