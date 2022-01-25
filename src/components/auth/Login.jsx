@@ -35,7 +35,7 @@ function Login({handleLoginClose, handleLoginSignUpToggle}) {
   }
 
   return (
-    <div className="login">
+    <div style={{marginLeft:"2em", marginRight:"2em"}} className="login">
       
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
@@ -68,7 +68,7 @@ function Login({handleLoginClose, handleLoginSignUpToggle}) {
               <Button variant="primary" onClick={handleLogin}>
                 Login
               </Button>{" "}
-              <Button variant="primary" onClick={handleLoginSignUpToggle}>
+              <Button variant="link" onClick={handleLoginSignUpToggle}>
                 Sign Up
               </Button>
             </Form>

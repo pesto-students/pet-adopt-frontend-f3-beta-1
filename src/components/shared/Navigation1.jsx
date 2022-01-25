@@ -21,8 +21,8 @@ function Navigation1({handleLoginShow,handleSignUpShow}) {
     }
     else{
       return (<>
-        <Nav.Link onClick={handleLoginShow} ><Link to="/login" >Login</Link></Nav.Link>
-        <Nav.Link onClick={handleSignUpShow} ><Link to="/signup">Sign Up</Link></Nav.Link>
+        <Nav.Link onClick={handleLoginShow} >Login</Nav.Link>
+        <Nav.Link onClick={handleSignUpShow} >Sign Up</Nav.Link>
       </>);
     }
   };

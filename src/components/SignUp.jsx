@@ -1,7 +1,8 @@
 import React, { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useNavigate, Link } from "react-router-dom";
 import { signUpUser } from "../store/slices/UserDetailSlice";
 import { useSelector, useDispatch } from "react-redux";
+import { Button, Form } from "react-bootstrap";
 
 function SignUp({handleSignUpClose, handleLoginSignUpToggle}) {
   const navigate = useNavigate();
@@ -10,7 +11,7 @@ function SignUp({handleSignUpClose, handleLoginSignUpToggle}) {
     name: "",
     email: "",
     phone: "",
-    work: "",
+    location: "",
     password: "",
     cpassword: "",
   });
@@ -26,9 +27,9 @@ function SignUp({handleSignUpClose, handleLoginSignUpToggle}) {
   async function handlePost(e) {
     e.preventDefault();
 
-    const { name, email, phone, work, password, cpassword } = user;
+    const { name, email, phone, location, password, cpassword } = user;
     const res = dispatch(
-      signUpUser({ name, email, phone, work, password, cpassword })
+      signUpUser({ name, email, phone, location, password, cpassword })
     );
 
     res
@@ -37,97 +38,158 @@ function SignUp({handleSignUpClose, handleLoginSignUpToggle}) {
       if (data.payload === 201) {
         window.alert("Registration Successful!!");
         console.log(data, userDetails, "userDetails");
-        navigate("/");
         handleSignUpClose();
       } else {
         console.log(data, userDetails, "userDetails");
         window.alert("Registeration failed");
       }
+      navigate("/home");
   });
     // console.log(data);
   }
 
   return (
-    <div className="login">
-      <div className="container">
-        <div className="row align-items-center my-5">
-          <div className="col-lg-5">
-            <h1 className="font-weight-light">Sign Up</h1>
-            <form method="post" className="form">
-              <div className="form">
-                <label htmlFor="name">Name:</label>
-                <input
-                  type="text"
-                  name="name"
-                  value={user.name}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form">
-                <label htmlFor="email">Email:</label>
-                <input
-                  type="email"
-                  name="email"
-                  value={user.email}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form">
-                <label htmlFor="email">Password:</label>
-                <input
-                  type="password"
-                  name="password"
-                  value={user.password}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form">
-                <label htmlFor="email">Confirm Password:</label>
-                <input
-                  type="password"
-                  name="cpassword"
-                  value={user.cpassword}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form">
-                <label htmlFor="phone">Phone:</label>
-                <input
-                  type="text"
-                  name="phone"
-                  value={user.phone}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form">
-                <label htmlFor="work">Work:</label>
-                <input
-                  type="text"
-                  name="work"
-                  value={user.work}
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="form">
-                <input
-                  type="submit"
-                  name="signup"
-                  value="Register"
-                  onClick={handlePost}
-                />
-              </div>
-              <div className="form">
-                <input
-                  type="button"
-                  name="login"
-                  value="Login"
-                  onClick={handleLoginSignUpToggle}
-                />
-              </div>
-            </form>
-          </div>
+    <div style={{marginLeft:"2em", marginRight:"2em"}} className="signup">
+      <Form>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Name</Form.Label>
+          <Form.Control
+            name="name"
+            value={user.name}
+            onChange={handleChange}
+            type="text"
+            placeholder="Enter name"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Email address</Form.Label>
+          <Form.Control
+            name="email"
+            value={user.email}
+            onChange={handleChange}
+            type="email"
+            placeholder="Enter email"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Password</Form.Label>
+          <Form.Control
+            name="password"
+            value={user.password}
+            onChange={handleChange}
+            type="password"
+            placeholder="Enter password"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Confirm Password</Form.Label>
+          <Form.Control
+            name="email"
+            value={user.cpassword}
+            onChange={handleChange}
+            type="password"
+            placeholder="Confirm password"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Phone</Form.Label>
+          <Form.Control
+            name="phone"
+            value={user.phone}
+            onChange={handleChange}
+            type="number"
+            placeholder="Enter phone"
+          />
+        </Form.Group>
+        <Form.Group className="mb-3" controlId="formBasicEmail">
+          <Form.Label>Location</Form.Label>
+          <Form.Control
+            name="location"
+            value={user.location}
+            onChange={handleChange}
+            type="text"
+            placeholder="Enter you location"
+          />
+        </Form.Group>
+        <Button variant="primary" onClick={handlePost}>
+          Sign Up
+        </Button>{" "}
+        <Button variant="link" onClick={handleLoginSignUpToggle}>
+          Login
+        </Button>
+      </Form>
+      {/* <form method="post" className="form">
+        <div className="form">
+          <label htmlFor="name">Name:</label>
+          <input
+            type="text"
+            name="name"
+            value={user.name}
+            onChange={handleChange}
+          />
         </div>
-      </div>
+        <div className="form">
+          <label htmlFor="email">Email:</label>
+          <input
+            type="email"
+            name="email"
+            value={user.email}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form">
+          <label htmlFor="email">Password:</label>
+          <input
+            type="password"
+            name="password"
+            value={user.password}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form">
+          <label htmlFor="email">Confirm Password:</label>
+          <input
+            type="password"
+            name="cpassword"
+            value={user.cpassword}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form">
+          <label htmlFor="phone">Phone:</label>
+          <input
+            type="text"
+            name="phone"
+            value={user.phone}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form">
+          <label htmlFor="work">Location:</label>
+          <input
+            type="text"
+            name="location"
+            value={user.location}
+            onChange={handleChange}
+          />
+        </div>
+        <div className="form">
+          <input
+            type="submit"
+            name="signup"
+            value="Register"
+            onClick={handlePost}
+          />
+        </div>
+        <div className="form">
+          <input
+            type="button"
+            name="login"
+            value="Login"
+            onClick={handleLoginSignUpToggle}
+          />
+        </div>
+      </form>          */}
     </div>
   );
 }
