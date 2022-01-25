@@ -10,12 +10,10 @@ import petsize from "../../mock-constant/pet-size-contant.json";
 import DropDownField from "../../common/DropDownField/DropDownField";
 import { useNavigate } from "react-router-dom";
 
-// import SearchLocation from "../../common/SearchLocation/SearchLocation";
-const tempImageKeys = [];
 export default function AddPets() {
   const state = useSelector(state => state.loggedInUserDetails)
   const initialAddPetState = {
-    userId: state[0]._id,
+    userId: state._id,
     petname: "",
     petcategory: "Dogs",
     petimage: [],
@@ -38,22 +36,15 @@ export default function AddPets() {
     console.log(petId);
     formData.append("image", image);
     formData.append("petId", petId);
-    const result = await axios.post("/images", formData, {
+    await axios.post("/images", formData, {
       headers: { "Content-Type": "multipart/form-data" },
     });
-    console.log(result.data.Key);
-    tempImageKeys.push(result.data.Key);
-    console.log(tempImageKeys);
-    // console.log(addPet);
-    // setAddPet({ ...addPet, petimage: tempImageKeys });
-    console.log(addPet);
-    return result.data;
   }
   //  image upload to state  function
   const handleImageChange = async (event) => {
     event.preventDefault();
-    const file = event.target.files[0]; // get the file
-    setFiles([...files, file]); // set the file
+    const fl = event.target.files[0]; // get the file
+    setFiles([...files, fl]); // set the file
     // image thumbnail after upload
     console.log(files, "filessssssssss");
     // const result = await postImage({ image: file,description: "image sent" });
@@ -64,10 +55,6 @@ export default function AddPets() {
       console.log(files);
       await postImage({ image: files[i], petId: petId });
     }
-    // dispatch(createPetDetails(addPet));
-    // console.log(await (async() => 'hello')())
-    // await ( async () =>setAddPet({ ...addPet, petimage: tempImageKeys }))();
-    // console.log(tempImageKeys);
   };
   const removeImage = (imageName) => {
     console.log(imageName);
@@ -90,13 +77,6 @@ export default function AddPets() {
       );
     });
     setDisplayImageName(imageThumbnailName);
-    // console.log(
-    //   <li>imageThumbnailName</li>,
-    //   imageThumbnailName,
-    //   "imageThumbnailName",
-    //   displayImageName,
-    //   files
-    // );
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [files || displayImageName]);
   const dispatch = useDispatch();
@@ -112,14 +92,11 @@ export default function AddPets() {
     dispatch(createPetDetails(addPet))
     .then(data =>{
       console.log(data.payload.data._id);
-      handleImageUpload(data.payload.data._id);
+      handleImageUpload(data.payload.data._id)
+      .then(data =>{
+        // navigate('/about')
+      })
     })
-    .then(() =>{
-      console.log(submitted, addPet);
-      navigate('/about')      
-    })
-    // .unwrap()
-    // .then((data) => console.log(data, "data"));
   };
   return (
     <div>
@@ -157,11 +134,6 @@ export default function AddPets() {
         />
       </Form.Group>
       <div>{displayImageName}</div>
-      {/* <Form.Group as={Row} controlId="adoptionFee">
-        <Button variant="primary" onClick={handleImageUpload}>
-          Submit
-        </Button>
-      </Form.Group> */}
       <Row className="mb-3">
         <DropDownField
           as={Col}
@@ -209,31 +181,6 @@ export default function AddPets() {
         />
       </Form.Group>
       <Row className="mb-4">
-        {/* <SearchLocation
-          as={Col}
-          name="searchlocation"
-          style={{
-            display: "block",
-            padding: " 0.375rem 0.75rem",
-            fontSize: " 1rem",
-            fontWeight: " 400",
-            lineHeight: " 1.5",
-            color: " #212529",
-            backgroundColor: " #fff",
-            backgroundClip: " padding-box",
-            border: " 1px solid #CED4DA",
-            appearance: " none",
-            borderRadius: " 0.25rem",
-            transition:
-              " border-color .15s ease-in-out,box-shadow .15s ease-in-out",
-          }}
-          onChange={handleInputChange}
-          onPlaceSelected={onPlaceSelected}
-          onSelect={handleInputChange}
-          types={["(regions)"]}
-          componentRestrictions={{ country: "in" }}
-          required
-        /> */}
         <Form.Group as={Col} controlId="adoptionFee">
           <Form.Label>Adoption Fee</Form.Label>
           <Form.Control
@@ -246,7 +193,7 @@ export default function AddPets() {
             max={2000}
           />
         </Form.Group>
-        <Form.Group as={Row} controlId="adoptionFee">
+        <Form.Group controlId="adoptionFee">
           <Button variant="primary" onClick={savePetDetail}>
             Submit
           </Button>

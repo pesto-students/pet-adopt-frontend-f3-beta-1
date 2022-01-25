@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useNavigate, Link } from "react-router-dom";
+import { useNavigate } from "react-router-dom";
 import { signUpUser } from "../store/slices/UserDetailSlice";
 import { useSelector, useDispatch } from "react-redux";
 import { Button, Form } from "react-bootstrap";
@@ -84,7 +84,7 @@ function SignUp({handleSignUpClose, handleLoginSignUpToggle}) {
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Confirm Password</Form.Label>
           <Form.Control
-            name="email"
+            name="cpassword"
             value={user.cpassword}
             onChange={handleChange}
             type="password"
@@ -97,7 +97,7 @@ function SignUp({handleSignUpClose, handleLoginSignUpToggle}) {
             name="phone"
             value={user.phone}
             onChange={handleChange}
-            type="number"
+            type="text"
             placeholder="Enter phone"
           />
         </Form.Group>

@@ -4,8 +4,12 @@ const signUpUser = (body) => {
   return http.post("/signup",body);
 };
 
-const login = () => {
+const loginCheck = () => {
   return http.get("/dashboard");
+};
+
+const login = (body) => {
+  return http.post("/signin",body);
 };
 
 const getAll = (userId) => {
@@ -61,11 +65,12 @@ const petDataService = {
   removeAll,
   findByTitle,
   signUpUser,
-  login,
+  loginCheck,
   getAllPets,
   sendRequest,
   petInDetail,
   handleLike,
+  login,
 };
 
 export default petDataService;

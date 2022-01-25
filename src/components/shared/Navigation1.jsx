@@ -2,14 +2,15 @@ import { useSelector } from 'react-redux';
 import { Navbar,Container,Nav,NavDropdown } from "react-bootstrap"
 import { Link } from 'react-router-dom';
 
-function Navigation1({handleLoginShow,handleSignUpShow}) {
-  const state = useSelector(state=>state.loggedInUserDetails);
-  console.log(state,"Nav");
-
+function Navigation1({handleLoginShow,handleSignUpShow, auth}) {
+  
+  
   const NavLinks = () => {
-    if (state.length) {
+    const state = useSelector(state=>state.loggedInUserDetails);
+    console.log(state.name);
+    if (state.name) {
       return (
-        <NavDropdown styles="{{background-color: transparent}}" bg="none" title={state[0].name} id="basic-nav-dropdown">
+        <NavDropdown styles="{{background-color: transparent}}" bg="none" title={state.name} id="basic-nav-dropdown">
           <NavDropdown.Item href="">My Account</NavDropdown.Item>
           <NavDropdown.Item ><Link to="/about" >My Pet</Link></NavDropdown.Item>
           <NavDropdown.Item ><Link to="/contact" >Add Pet</Link></NavDropdown.Item>
@@ -34,7 +35,7 @@ function Navigation1({handleLoginShow,handleSignUpShow}) {
             <Navbar.Toggle aria-controls="responsive-navbar-nav" />
             <Navbar.Collapse id="responsive-navbar-nav">
             <Nav>
-                <Nav.Link href="/home">Home</Nav.Link>
+                <Nav.Link><Link to="/home" >Home</Link></Nav.Link>
                 <NavLinks />
             </Nav>
             </Navbar.Collapse>

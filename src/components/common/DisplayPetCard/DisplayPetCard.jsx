@@ -39,7 +39,7 @@ function DisplayPetCard({userId, _id,about,petname,petimages=[{image:''}],reques
   }
 
   const RequestButton = () => {
-    if(userId===state[0]._id){
+    if(userId===state._id){
       return <Button onClick={handlePetClick} >{requests.length} Request{requests.length>1 ? "s" : null}</Button>
     }
     else if(userExists(userId)){

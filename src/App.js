@@ -18,6 +18,7 @@ import {
 function App() {
   const [showLogin, setShowLogin] = useState(false);
   const [showSignUp, setShowSignUp] = useState(false);
+  const [auth,setAuth] = useState(false);
 
   const handleLoginClose = () => {
     setShowLogin(false)
@@ -44,6 +45,7 @@ function App() {
     <Header 
       handleLoginShow = {handleLoginShow}
       handleSignUpShow = {handleSignUpShow}
+      auth = {auth}
     />
     <Routes>
       <Route path="/home" element={<Home />} />
@@ -63,6 +65,7 @@ function App() {
         <Login
           handleLoginClose = {handleLoginClose}
           handleLoginSignUpToggle = {handleLoginSignUpToggle}
+          setAuth = {setAuth}
         />
         <Modal.Footer></Modal.Footer>
       </Modal>
