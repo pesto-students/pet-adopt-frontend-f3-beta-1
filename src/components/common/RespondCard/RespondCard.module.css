@@ -1,0 +1,85 @@
+.respondcard__container {
+  width: 441px;
+  height: 255px;
+  left: 0px;
+  top: 644px;
+  background: #effbff;
+  box-shadow: 4px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+.respondcard__inner_container {
+  display: flex;
+  justify-content: space-around;
+  padding-top: 1.5rem;
+}
+
+.respondcard__container_text_content {
+  display: flex;
+  flex-direction: column;
+  flex-wrap: nowrap;
+  align-items: center;
+  justify-content: space-evenly;
+}
+
+.respondcard__container_image {
+  width: 191px;
+  height: 207px;
+  left: 20px;
+  top: 24px;
+  border-radius: 100px;
+}
+
+.respondcard__container_text_name {
+  width: 132px;
+  height: 52px;
+  left: 267px;
+  top: 43px;
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  /* or 130% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+}
+
+.respondcard__container_text_location {
+  height: 52px;
+  left: 254px;
+  top: 107px;
+
+  font-family: Inter;
+  font-style: normal;
+  font-weight: 500;
+  font-size: 20px;
+  line-height: 26px;
+  /* or 130% */
+
+  display: flex;
+  align-items: center;
+  text-align: center;
+
+  color: #000000;
+}
+
+.respondcard__container_button {
+  display: flex;
+  flex-direction: row;
+  align-items: center;
+  padding: 24px;
+
+  width: 166px;
+  height: 50px;
+  left: 256px;
+  top: 181px;
+  background: #6181f3;
+  border-radius: 12px;
+  padding-left: 50px;
+}
