@@ -2,12 +2,10 @@ import { useSelector } from 'react-redux';
 import { Navbar,Container,Nav,NavDropdown } from "react-bootstrap"
 import { Link } from 'react-router-dom';
 
-function Navigation1({handleLoginShow,handleSignUpShow, auth}) {
-  
+function Navigation1({handleLoginShow,handleSignUpShow, auth}) {  
   
   const NavLinks = () => {
     const state = useSelector(state=>state.loggedInUserDetails);
-    console.log(state.name);
     if (state.name) {
       return (
         <NavDropdown styles="{{background-color: transparent}}" bg="none" title={state.name} id="basic-nav-dropdown">

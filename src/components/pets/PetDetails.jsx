@@ -2,18 +2,21 @@ import React from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Carousel } from "react-bootstrap"
 import styles from "./PetDetails.module.css"
-import { handleLike } from "../../store/slices/PetInDetailSlice"
-import { useNavigate } from "react-router-dom"
+import { handleLike, handleUnLike } from "../../store/slices/PetInDetailSlice"
  
 function PetDetails() {
   const state = useSelector(state=>state.petInDetail)
   const userState = useSelector(state=>state.loggedInUserDetails)
   const dispatch = useDispatch()
-  const navigate = useNavigate();
 
   const handleLikeButton = () => {
     console.log(state._id,userState._id);
     dispatch(handleLike({_id: state._id,userId: userState._id}))
+  }
+
+  const handleUnLikeButton = () => {
+    console.log(state._id,userState._id);
+    dispatch(handleUnLike({_id: state._id,userId: userState._id}))
   }
 
   function userExists(uid) {
@@ -44,8 +47,8 @@ function PetDetails() {
         <span className={styles.details}>{state.gender}</span>
         <span className={styles.details}>{state.size}</span>
         <span className={styles.details}>Age {state.age}</span>
-        {userExists(userState._id) ? <span onClick={handleLikeButton} className={styles.details}>💖</span> : <span onClick={handleLikeButton} className={styles.details}>💛</span>}
-        <span className={styles.details}>{state.likes.length}</span>
+        {userExists(userState._id) ? <span onClick={handleUnLikeButton} className={styles.numberOfLikes}>💖</span> : <span onClick={handleLikeButton} className={styles.numberOfLikes}>💛</span>}
+        <span className={styles.numberOfLikes}>{state.likes.length}</span>
       </div>
       <div className={styles.detailsDivStyles}>
         <p>
@@ -53,7 +56,12 @@ function PetDetails() {
         </p>
       </div>
       <div className={styles.detailsDivStyles}>
-        <span>{state.adoptionFee}</span>
+        <span className={styles.details}>₹{state.adoptionFee}</span>
+        <span className={styles.details}>{userState.location}</span>
+        <span className={styles.details}>{state.location}</span>
+      </div>
+      <div className={styles.detailsDivStyles}>
+        <span className={styles.details}>Owner: {userState.name}</span>
       </div>      
     </>
   );

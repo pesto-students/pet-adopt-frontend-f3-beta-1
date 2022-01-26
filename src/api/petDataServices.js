@@ -28,6 +28,10 @@ const handleLike = (body) => {
   return http.post("/like",body);
 };
 
+const handleUnLike = (body) => {
+  return http.post("/unlike",body);
+};
+
 const petInDetail = (_id) => {
   return http.get(`/petindetail/${_id}`);
 };
@@ -71,6 +75,7 @@ const petDataService = {
   petInDetail,
   handleLike,
   login,
+  handleUnLike,
 };
 
 export default petDataService;
