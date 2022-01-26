@@ -193,7 +193,7 @@ export default function AddPets() {
             max={2000}
           />
         </Form.Group>
-        <Form.Group controlId="adoptionFee">
+        <Form.Group style={{marginTop: "2rem",textAlign: "center"}} controlId="adoptionFee">
           <Button variant="primary" onClick={savePetDetail}>
             Submit
           </Button>

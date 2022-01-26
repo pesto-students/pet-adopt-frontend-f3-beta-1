@@ -19,7 +19,7 @@ function DisplayPetCard({userId, _id,about,petname,petimages=[{image:''}],reques
   const handlePetClick = async () => {
     window.alert("PetClicked "+_id);
     dispatch(petInDetail(_id))
-     .then(data =>navigate("/petindetail"))
+     .then(data =>navigate(`/petindetail/${_id}`))
   }
 
   const handleSendRequest = async () => {
@@ -27,7 +27,7 @@ function DisplayPetCard({userId, _id,about,petname,petimages=[{image:''}],reques
     dispatch(sendRequest({_id,userId:state._id}))
     .then(() =>{
       dispatch(petInDetail(_id))
-     .then(data =>navigate("/petindetail"))
+     .then(data =>navigate(`/petindetail/${_id}`))
     })
     // .then(data => {
     //   console.log(data)

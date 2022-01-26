@@ -24,3 +24,29 @@
     margin-left: 10em;
     margin-right: 10em;
 }
+
+.grid_container {
+    width: 79%;
+    margin: auto;
+  }
+  
+   .grid_container_h1_div{
+    width: 60%;
+    margin-bottom: 2rem;
+  }
+  
+  .grid_container_h1 {
+    width: 63%;
+    margin: auto;
+    width: 328px;
+    height: 29px;
+    left: 131px;
+    top: 1793px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: bold;
+    font-size: 28px;
+    line-height: 33px;
+    color: #000000;
+  }
+  

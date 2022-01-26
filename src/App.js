@@ -53,8 +53,10 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/logout" element={<Logout />} />
-      <Route path="/petindetail" element={<PetDetails />} />
+      <Route path="/petindetail/:petId" element={<PetDetails />} />
+      <Route path="/petindetail/:petId/reqs" element={<PetDetails />} />
       <Route path="/category/:category" element={<DisplayAllPets />} />
+
       
     </Routes>
       <Modal aria-labelledby="contained-modal-title-vcenter"

@@ -1,9 +1,11 @@
 import React from "react";
 import { Button } from "react-bootstrap";
 import styles from "./RespondCard.module.css";
+import { Col } from "react-bootstrap";
 
-function RespondCard() {
+function RespondCard({userId,status}) {
   return (
+    <Col xs={12} md={6}>
     <div className={styles.respondcard__container}>
       <div className={styles.respondcard__inner_container}>
         <img
@@ -13,17 +15,18 @@ function RespondCard() {
         />
         <div className={styles.respondcard__container_text_content}>
           <div className={styles.respondcard__container_text_name}>
-            Owner Name
+            Owner Name 
           </div>
           <div className={styles.respondcard__container_text_location}>
             Location
           </div>
           <Button className={styles.respondcard__container_button}>
-            Respond
+            {status ? "Responded" : "Respond"}
           </Button>
         </div>
       </div>
     </div>
+    </Col>
   );
 }
 
