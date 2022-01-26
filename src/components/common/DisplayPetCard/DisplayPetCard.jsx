@@ -19,16 +19,20 @@ function DisplayPetCard({userId, _id,about,petname,petimages=[{image:''}],reques
   const handlePetClick = async () => {
     window.alert("PetClicked "+_id);
     dispatch(petInDetail(_id))
-    .then(data =>navigate("/petindetail"))
+     .then(data =>navigate("/petindetail"))
   }
 
   const handleSendRequest = async () => {
     window.alert("PetClicked "+_id);
-    dispatch(sendRequest({_id,userId}))
-    .then(data => {
-      console.log(data)
-      navigate("/petindetail")
-      })
+    dispatch(sendRequest({_id,userId:state._id}))
+    .then(() =>{
+      dispatch(petInDetail(_id))
+     .then(data =>navigate("/petindetail"))
+    })
+    // .then(data => {
+    //   console.log(data)
+    //   navigate("/petindetail")
+    //   })
     .catch(err => console.log(err));
   }
 
@@ -39,10 +43,11 @@ function DisplayPetCard({userId, _id,about,petname,petimages=[{image:''}],reques
   }
 
   const RequestButton = () => {
+    console.log(userId,state._id);
     if(userId===state._id){
-      return <Button onClick={handlePetClick} >{requests.length} Request{requests.length>1 ? "s" : null}</Button>
+      return <Button>{requests.length} Request{requests.length>1 ? "s" : null}</Button>
     }
-    else if(userExists(userId)){
+    else if(userExists(state._id)){
       return <Button>Request Sent</Button>
     }
     else{

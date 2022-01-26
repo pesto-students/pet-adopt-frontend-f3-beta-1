@@ -9,6 +9,16 @@
     line-height: 26px;
 }
 
+.numberOfLikes{
+    width: 85px;
+    height: 26px;
+    font-family: Roboto;
+    font-style: normal;
+    font-weight: 500;
+    font-size: 22px;
+    line-height: 26px;
+}
+
 .detailsDivStyles{
     margin-top: 2em;
     margin-left: 10em;
