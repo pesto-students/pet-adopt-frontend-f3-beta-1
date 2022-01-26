@@ -41,13 +41,13 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
         <Container>
           <Navbar.Brand href="/">
             <img
-              src="../../../../../public/images/PetPalLogo.png"
+              src="http://dogprintsgrooming.com/wp-content/uploads/2015/03/Dog_Print_Icons_3.png"
               width="30"
               height="30"
               className="d-inline-block align-top"
-              alt="React Bootstrap logo"
+              alt=""
             />
-            PetPal
+            {" "} PetPal
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

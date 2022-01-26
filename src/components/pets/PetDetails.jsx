@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect} from "react";
 import { useDispatch, useSelector } from "react-redux"
 import { Carousel } from "react-bootstrap"
 import styles from "./PetDetails.module.css"
@@ -7,6 +7,7 @@ import { sendRequest } from "../../store/slices/AddPetSlice";
 import { Button } from "react-bootstrap"
 import RespondCard from "../common/RespondCard/RespondCard";
 import { Row } from "react-bootstrap";
+import axios from "axios";
 
  
 function PetDetails() {
@@ -14,6 +15,27 @@ function PetDetails() {
   const state = useSelector(state=>state.petInDetail)
   const userState = useSelector(state=>state.loggedInUserDetails)
   const dispatch = useDispatch()
+  const [ownerData, setOwnerData] = useState({})
+
+  async function FetchNameLocation() {
+    const res = axios({
+      method: "get",
+      // url: "https://petpalbackend.herokuapp.com/logout",
+      url: `/username/${state.userId}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res;
+  }
+
+  useEffect(() => {
+    FetchNameLocation().then(data => {
+      setOwnerData(data.data[0]);
+    })
+    // eslint-disable-next-line
+  },[])
+
 
   const handleLikeButton = () => {
     dispatch(handleLike({_id: state._id,userId: userState._id}))
@@ -74,7 +96,7 @@ function PetDetails() {
         <div className={styles.grid_container_h1}>Requests</div>
       </div>
       <Row className={styles.grid_container}>
-        {state.requests.map(user =><RespondCard userId={user.userId} status={user.status} />)}
+        {state.requests.map(user =><RespondCard petId={state._id} userId={user.userId} status={user.status} />)}
       </Row>
       </>
     )
@@ -108,11 +130,11 @@ function PetDetails() {
       {displayResquest ? RequestPart() : AboutPart()}
       <div className={styles.detailsDivStyles}>
         <span className={styles.details}>₹{state.adoptionFee}</span>
-        <span className={styles.details}>{userState.location}</span>
+        <span className={styles.details}>{ownerData.location}</span>
         <RequestButton />
       </div>
       <div className={styles.detailsDivStyles}>
-        <span className={styles.details}>Owner: {userState.name}</span>
+        <span className={styles.details}>Owner: {ownerData.name}</span>
       </div>      
     </>
   );

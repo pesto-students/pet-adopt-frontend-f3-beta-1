@@ -1,9 +1,33 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Button } from "react-bootstrap";
 import styles from "./RespondCard.module.css";
 import { Col } from "react-bootstrap";
+import axios from "axios"
 
-function RespondCard({userId,status}) {
+function RespondCard({petId,userId,status}) {
+  const [userData, setUserData] = useState({})
+
+  async function FetchNameLocation() {
+    const res = axios({
+      method: "get",
+      // url: "https://petpalbackend.herokuapp.com/logout",
+      url: `/username/${userId}`,
+      headers: {
+        "Content-Type": "application/json",
+      },
+    });
+    return res;
+  }
+
+  useEffect(() => {
+    FetchNameLocation().then(data => {
+      console.log(data);
+      setUserData(data.data[0]);
+    })
+    // eslint-disable-next-line
+  },[])
+
+
   return (
     <Col xs={12} md={6}>
     <div className={styles.respondcard__container}>
@@ -15,10 +39,10 @@ function RespondCard({userId,status}) {
         />
         <div className={styles.respondcard__container_text_content}>
           <div className={styles.respondcard__container_text_name}>
-            Owner Name 
+            {userData.name} 
           </div>
           <div className={styles.respondcard__container_text_location}>
-            Location
+            {userData.location}
           </div>
           <Button className={styles.respondcard__container_button}>
             {status ? "Responded" : "Respond"}

@@ -69,7 +69,7 @@ function App() {
           handleLoginSignUpToggle = {handleLoginSignUpToggle}
           setAuth = {setAuth}
         />
-        <Modal.Footer></Modal.Footer>
+        
       </Modal>
       <Modal aria-labelledby="contained-modal-title-vcenter"
       centered show={showSignUp} onHide={handleSignUpClose}>
@@ -80,7 +80,6 @@ function App() {
           handleSignUpClose = {handleSignUpClose}
           handleLoginSignUpToggle = {handleLoginSignUpToggle}                  
         />
-        <Modal.Footer></Modal.Footer>
       </Modal>
     <Footer />
   </Router>

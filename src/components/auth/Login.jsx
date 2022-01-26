@@ -44,7 +44,7 @@ function Login({handleLoginClose, handleLoginSignUpToggle, setAuth}) {
   }
 
   return (
-    <div style={{marginLeft:"3rem", marginRight:"3rem"}} className="login">      
+    <div style={{marginLeft:"3rem", marginRight:"3rem", marginBottom:"1rem"}} className="login">      
             <Form>
               <Form.Group className="mb-3" controlId="formBasicEmail">
                 <Form.Label>Email address</Form.Label>

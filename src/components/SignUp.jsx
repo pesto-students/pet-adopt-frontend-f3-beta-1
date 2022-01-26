@@ -49,7 +49,7 @@ function SignUp({handleSignUpClose, handleLoginSignUpToggle}) {
   }
 
   return (
-    <div style={{marginLeft:"3rem", marginRight:"3rem"}} className="signup">
+    <div style={{marginLeft:"3rem", marginRight:"3rem", marginBottom:"1rem"}} className="signup">
       <Form>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Name</Form.Label>
