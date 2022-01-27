@@ -24,6 +24,10 @@ const sendRequest = (body) => {
   return http.post("/sendrequest",body);
 };
 
+const sendRespond = (body) => {
+  return http.post("/sendrespond",body);
+};
+
 const handleLike = (body) => {
   return http.post("/like",body);
 };
@@ -76,6 +80,7 @@ const petDataService = {
   handleLike,
   login,
   handleUnLike,
+  sendRespond,
 };
 
 export default petDataService;

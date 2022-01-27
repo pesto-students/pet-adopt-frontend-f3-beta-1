@@ -3,9 +3,12 @@ import { Button } from "react-bootstrap";
 import styles from "./RespondCard.module.css";
 import { Col } from "react-bootstrap";
 import axios from "axios"
+import { useDispatch } from "react-redux"
+import { sendRespond } from "../../../store/slices/PetInDetailSlice"
 
 function RespondCard({petId,userId,status}) {
   const [userData, setUserData] = useState({})
+  const dispatch = useDispatch();
 
   async function FetchNameLocation() {
     const res = axios({
@@ -27,6 +30,10 @@ function RespondCard({petId,userId,status}) {
     // eslint-disable-next-line
   },[])
 
+  const handleRespondClick = () => {
+    dispatch(sendRespond({_id:petId,userId}))
+    .then(data =>console.log(status))
+  }
 
   return (
     <Col xs={12} md={6}>
@@ -44,7 +51,7 @@ function RespondCard({petId,userId,status}) {
           <div className={styles.respondcard__container_text_location}>
             {userData.location}
           </div>
-          <Button className={styles.respondcard__container_button}>
+          <Button onClick={handleRespondClick} className={styles.respondcard__container_button}>
             {status ? "Responded" : "Respond"}
           </Button>
         </div>

@@ -28,6 +28,14 @@ export const handleUnLike = createAsyncThunk(
   }
 );
 
+export const sendRespond = createAsyncThunk(
+  "/sendrespond",
+  async (_id,userId) => {
+    const res = await petDataService.sendRespond(_id,userId);
+    return res.data;
+  }
+);
+
 const petInDetailSlice = createSlice({
   name: "PetInDetail",
   initialState,
@@ -40,6 +48,9 @@ const petInDetailSlice = createSlice({
       return action.payload
     },
     [handleUnLike.fulfilled]: (state, action) => {
+      return action.payload
+    },
+    [sendRespond.fulfilled]: (state, action) => {
       return action.payload
     },
   },

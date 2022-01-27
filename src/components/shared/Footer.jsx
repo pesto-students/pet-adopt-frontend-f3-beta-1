@@ -49,7 +49,7 @@ function Footer() {
                         placeholder="Your email"
                         className={styles.email_input_field}
                       />
-                      <div className={styles.email_submit_button}>-></div>
+                      <div className={styles.email_submit_button}>{"->"}</div>
                     </div>
                     <p>
                       Hello, we are Lift Media. Our goal is to translate the

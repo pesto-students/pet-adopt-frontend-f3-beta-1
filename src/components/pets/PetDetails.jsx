@@ -70,8 +70,9 @@ function PetDetails() {
 
   const RequestButton = () => {
     console.log(state.userId,userState._id);
+    const buttonText = `${state.requests.length} Request${state.requests.length>1 ? "s" : null}`
     if(state.userId===userState._id){
-      return <Button onClick={handleShowRequests}>{state.requests.length} Request{state.requests.length>1 ? "s" : null}</Button>
+      return <Button onClick={handleShowRequests}>{ displayResquest ? buttonText : "Show About" }</Button>
     }
     else if(userExists(userState._id)){
       return <Button>Request Sent</Button>
@@ -96,7 +97,7 @@ function PetDetails() {
         <div className={styles.grid_container_h1}>Requests</div>
       </div>
       <Row className={styles.grid_container}>
-        {state.requests.map(user =><RespondCard petId={state._id} userId={user.userId} status={user.status} />)}
+        {state.requests.map(user =><RespondCard petId={state._id} userId={user.userId} status={user.requestStatus} />)}
       </Row>
       </>
     )
