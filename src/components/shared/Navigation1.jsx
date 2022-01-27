@@ -66,9 +66,6 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
             <Nav className="me-auto">
-              <Nav.Link>
-                <Link to="/home">Home</Link>
-              </Nav.Link>
             </Nav>
             <Nav>
               <NavLinks />
