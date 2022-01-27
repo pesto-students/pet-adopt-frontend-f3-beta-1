@@ -5,6 +5,7 @@ import PopularCategory from "./pets/PopularCategory/PopularCategory";
 import MostLikedPets from "./pets/MostLikedPets/MostLikedPets";
 import TestimonialSection from "./pets/TestimonialSection/TestimonialSection";
 import CorouselPics from "./shared/CarouselPics";
+import styles from "./Home.module.css";
 
 function PetDetails() {
   const dispatch = useDispatch();
@@ -20,7 +21,7 @@ function PetDetails() {
   return (
     <>
       <CorouselPics />
-      <div className="grid_container">
+      <div className={styles.grid_container}>
         <PopularCategory />
         <MostLikedPets />
         <TestimonialSection />

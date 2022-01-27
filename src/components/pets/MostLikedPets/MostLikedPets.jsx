@@ -7,7 +7,7 @@ function MostLikedPets() {
   return (
     <div>
       <div className={styles.grid_container_h1}>
-        <div>MostLikedCard</div>
+        <h2>MostLikedCard</h2>
       </div>
       <Row className={styles.grid_container}>
         <MostLikedCard />

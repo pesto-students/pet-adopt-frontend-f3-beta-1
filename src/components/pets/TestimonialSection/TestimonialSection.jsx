@@ -7,7 +7,7 @@ function TestimonialSection() {
   return (
     <div>
       <div className={styles.grid_container_h1_div}>
-        <div className={styles.grid_container_h1}>Testimonials</div>
+        <h2 className={styles.grid_container_h1}>Testimonials</h2>
       </div>
       <Row className={styles.grid_container}>
         <TestimonialCard />
