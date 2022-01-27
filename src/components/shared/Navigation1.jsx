@@ -10,7 +10,7 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
   const urlLocation = useLocation();
   const [styleNavbar, setStyleNavbar] = useState(true);
   const state = useSelector((state) => state.loggedInUserDetails);
-  
+
   const checkUser = async () => {
     dispatch(loggedInUser());
   };
@@ -60,7 +60,6 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
     <>
       <Navbar
         collapseOnSelect
-        variant="dark"
         className={styleNavbar ? "my-nav-home" : "my-nav"}
         expand="lg"
       >
