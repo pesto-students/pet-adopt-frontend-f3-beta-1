@@ -1,8 +1,22 @@
 import { useSelector } from "react-redux";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link } from "react-router-dom";
+import React,{ useEffect } from "react";
+import { useDispatch } from "react-redux";
+import { loggedInUser } from "../../store/slices/LoggedInUserDataSlice";
 
 function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
+
+  const dispatch = useDispatch();
+
+  const checkUser = async () => {
+    dispatch(loggedInUser())
+  }
+  useEffect(() => {
+    checkUser();
+  // eslint-disable-next-line
+  },[])
+
   const NavLinks = () => {
     const state = useSelector((state) => state.loggedInUserDetails);
     if (state.name) {

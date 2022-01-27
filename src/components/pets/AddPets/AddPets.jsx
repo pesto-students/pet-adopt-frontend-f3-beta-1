@@ -29,7 +29,7 @@ export default function AddPets() {
   const [displayImageName, setDisplayImageName] = useState();
   const [submitted, setSubmitted] = useState(false);
   const [files, setFiles] = useState([]);
-  const navigate =useNavigate();
+  // const navigate =useNavigate();
 
   async function postImage({ image, petId }) {
     const formData = new FormData();
