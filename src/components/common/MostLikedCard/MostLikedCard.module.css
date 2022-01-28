@@ -12,7 +12,6 @@
   width: 276px;
   height: 374px;
   margin-bottom: 2rem;
-
   display: flex;
   flex-direction: column;
   align-items: center;
@@ -22,14 +21,10 @@
 .card_title {
   width: 174px;
   height: 51px;
-  /* left: 150px;
-  top: 1536px; */
-  font-family: Lato;
   font-style: normal;
   font-weight: 900;
   font-size: 32.0315px;
   line-height: 36px;
-  /* or 113% */
   display: flex;
   align-items: center;
   color: #ffffff;
@@ -39,9 +34,7 @@
 
 .card_title_paragraph {
   width: 223.82px;
-  height: 56.25px;
-
-  font-family: Roboto;  
+  height: 56.25px;  
   font-style: normal;
   font-weight: 500;
   font-size: 18px;

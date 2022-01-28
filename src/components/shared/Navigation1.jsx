@@ -1,24 +1,31 @@
 import { useSelector } from "react-redux";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { Link } from "react-router-dom";
-import React,{ useEffect } from "react";
+import { Link, useLocation } from "react-router-dom";
+import React, { useEffect, useState } from "react";
 import { useDispatch } from "react-redux";
 import { loggedInUser } from "../../store/slices/LoggedInUserDataSlice";
 
 function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
-
   const dispatch = useDispatch();
+  const urlLocation = useLocation();
+  const [styleNavbar, setStyleNavbar] = useState(true);
+  const state = useSelector((state) => state.loggedInUserDetails);
 
   const checkUser = async () => {
-    dispatch(loggedInUser())
-  }
+    dispatch(loggedInUser());
+  };
+
   useEffect(() => {
     checkUser();
-  // eslint-disable-next-line
-  },[])
+    if (urlLocation.pathname === "/home" || urlLocation.pathname === "/") {
+      setStyleNavbar(true);
+    } else {
+      setStyleNavbar(false);
+    }
+    // eslint-disable-next-line
+  }, [urlLocation.pathname]);
 
   const NavLinks = () => {
-    const state = useSelector((state) => state.loggedInUserDetails);
     if (state.name) {
       return (
         <NavDropdown
@@ -51,7 +58,11 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
 
   return (
     <>
-      <Navbar collapseOnSelect variant="dark" className="my-nav" expand="lg">
+      <Navbar
+        collapseOnSelect
+        className={styleNavbar ? "my-nav-home" : "my-nav"}
+        expand="lg"
+      >
         <Container>
           <Navbar.Brand href="/">
             <img
@@ -60,13 +71,12 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
               height="30"
               className="d-inline-block align-top"
               alt=""
-            />
-            {" "} PetPal
+            />{" "}
+            PetPal
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">
-            <Nav className="me-auto">
-            </Nav>
+            <Nav className="me-auto"></Nav>
             <Nav>
               <NavLinks />
             </Nav>
