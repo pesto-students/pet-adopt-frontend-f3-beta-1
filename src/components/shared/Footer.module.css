@@ -53,15 +53,16 @@
   /* Lift Blue */
   background: #0081fe;
   border-radius: 8px;
-  height: 46.32px;
+  height: 42px;
   text-align: center;
-  padding-top: 0.6rem;
+  padding-top: 0.4rem;
   width: 61.46px;
   color:white;
 }
 
 .email_input_button_container {
   display: flex;
+  align-items: center;
   padding-bottom: 0.5rem;
 }
 
