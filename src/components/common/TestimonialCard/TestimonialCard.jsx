@@ -29,6 +29,7 @@ function TestimonialCard() {
             <img
               className={styles.testimonial_card_container_content_img}
               src="https://media.geeksforgeeks.org/wp-content/uploads/20210425000233/test-300x297.png"
+              alt=""
             />
           </div>
         </div>
