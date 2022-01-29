@@ -41,7 +41,9 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
           <NavDropdown.Item>
             <Link to="/contact">Add Pet</Link>
           </NavDropdown.Item>
-          <NavDropdown.Item href="">All Requests</NavDropdown.Item>
+          <NavDropdown.Item>
+            <Link to={`/myrequests/${state._id}`}>My requests</Link> 
+          </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
         </NavDropdown>

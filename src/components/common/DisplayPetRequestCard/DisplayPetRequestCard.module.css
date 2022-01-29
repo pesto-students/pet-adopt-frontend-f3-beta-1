@@ -1,0 +1,76 @@
+.wrapper {
+  border: none !important;
+}
+
+.card_wrapper {
+  margin: auto;
+  width: 50%;
+  height: 40%;
+  left: 12px;
+  top: 21px;
+  background: #effbff;
+  margin-top: 2rem;
+  box-sizing: border-box;
+  box-shadow: 2px 4px 4px rgba(0, 0, 0, 0.25);
+  border-radius: 12px;
+}
+
+.card_image {
+  width: 230px;
+  height: 230px;
+  left: 0px;
+  top: 0px;
+  border-radius: 12px;
+}
+
+.card_details {
+  margin: 1rem;
+}
+
+.card_title,
+.card_footer {
+  display: flex;
+  justify-content: space-between;
+}
+
+.card_title_name {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 30px;
+  color: #000000;
+}
+
+.card_title_breed,
+.card_title_gender,
+.card_footer_amount,
+.card_footer_location {
+  font-style: normal;
+  font-weight: 500;
+  font-size: 22px;
+  line-height: 26px;
+  color: #747373;
+}
+
+.card_paragraph {
+  margin-top: 3.5rem;
+  margin-bottom: 3.5rem;
+  font-style: normal;
+  font-weight: normal;
+  font-size: 18px;
+  line-height: 21px;
+  letter-spacing: 0.05em;
+}
+
+.card_footer_send_request {
+  /* width: 182px;
+  height: 50px;
+  left: 672px;
+  top: 184px; */
+  background: #6181f3;
+  border-radius: 12px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  color: white;
+}

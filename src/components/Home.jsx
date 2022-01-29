@@ -11,7 +11,8 @@ function PetDetails() {
   const dispatch = useDispatch();
 
   const checkUser = async () => {
-    dispatch(loggedInUser());
+    dispatch(loggedInUser())
+    .then(data => console.log(data))
   };
   useEffect(() => {
     checkUser();

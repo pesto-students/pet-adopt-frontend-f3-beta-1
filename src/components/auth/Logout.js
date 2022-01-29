@@ -16,7 +16,7 @@ function Logout() {
             });
             const data = await res.json();
             if(data){
-                navigate('/login');
+                navigate('/home');
             }
             if(data.status!==200){
                 navigate('/home');
