@@ -8,6 +8,7 @@ import { createPetDetails } from "../../../store/slices/AddPetSlice";
 import petgender from "../../mock-constant/pet-gender-constant.json";
 import petsize from "../../mock-constant/pet-size-contant.json";
 import DropDownField from "../../common/DropDownField/DropDownField";
+// eslint-disable-next-line
 import { useNavigate } from "react-router-dom";
 
 export default function AddPets() {
