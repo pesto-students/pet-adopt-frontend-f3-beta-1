@@ -2,22 +2,22 @@ import { useSelector } from "react-redux";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
 import { Link, useLocation } from "react-router-dom";
 import React, { useEffect, useState } from "react";
-import { useDispatch } from "react-redux";
-import { loggedInUser } from "../../store/slices/LoggedInUserDataSlice";
+// import { useDispatch } from "react-redux";
+// import { loggedInUser } from "../../store/slices/LoggedInUserDataSlice";
 
 function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
-  const dispatch = useDispatch();
+  // const dispatch = useDispatch();
   const urlLocation = useLocation();
   const [styleNavbar, setStyleNavbar] = useState(true);
   const state = useSelector((state) => state.loggedInUserDetails);
 
-  const checkUser = async () => {
-    dispatch(loggedInUser());
-  };
+  // const checkUser = async () => {
+  //   dispatch(loggedInUser());
+  // };
 
   useEffect(() => {
-    checkUser();
-    if (urlLocation.pathname === "/home" || urlLocation.pathname === "/") {
+    //checkUser();
+    if (urlLocation.pathname === "/home" || urlLocation.pathname === "/" || urlLocation.pathname === "/about") {
       setStyleNavbar(true);
     } else {
       setStyleNavbar(false);
@@ -28,6 +28,7 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
   const NavLinks = () => {
     if (state.name) {
       return (
+        <>
         <NavDropdown
           styles="{{background-color: transparent}}"
           bg="none"
@@ -35,18 +36,19 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
           id="basic-nav-dropdown"
         >
           <NavDropdown.Item href="">My Account</NavDropdown.Item>
-          <NavDropdown.Item>
-            <Link to="/about">My Pet</Link>
-          </NavDropdown.Item>
-          <NavDropdown.Item>
-            <Link to="/contact">Add Pet</Link>
-          </NavDropdown.Item>
-          <NavDropdown.Item>
-            <Link to={`/myrequests/${state._id}`}>My requests</Link>
-          </NavDropdown.Item>
+          <NavDropdown.Item href="/about">My Pet</NavDropdown.Item>
+          <NavDropdown.Item href="/contact">Add Pet</NavDropdown.Item>
+          <NavDropdown.Item><Link to={`/myrequests/${state._id}`} >My Requests</Link></NavDropdown.Item>
+          {/* <NavDropdown.Divider />
+            <Nav.Link as={Link} to="/about">My Pet</Nav.Link>
+          <NavDropdown.Divider />
+            <Nav.Link as={Link} to="/contact">Add Pet</Nav.Link>
+          <NavDropdown.Divider />
+            <Nav.Link as={Link} to={`/myrequests/${state._id}`}>My requests</Nav.Link> */}
           <NavDropdown.Divider />
           <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
         </NavDropdown>
+        </>
       );
     } else {
       return (
@@ -64,6 +66,7 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
         collapseOnSelect
         className={styleNavbar ? "my-nav-home" : "my-nav"}
         expand="lg"
+        variant="dark"
       >
         <Container>
           <Navbar.Brand href="/">
@@ -75,7 +78,7 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
               alt="petpal logo"
               loading="lazy"
             />
-            PetPal
+            {" "}PetPal
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />
           <Navbar.Collapse id="responsive-navbar-nav">

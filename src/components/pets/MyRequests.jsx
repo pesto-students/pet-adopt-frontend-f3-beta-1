@@ -7,19 +7,19 @@ import DisplayPetRequestCard from "../common/DisplayPetRequestCard/DisplayPetReq
 function MyRequests() {
     const dispatch = useDispatch();
     const state = useSelector(state=>state.loggedInUserDetails)
-
     const checkUser = async () => {
-        dispatch(loggedInUser());
+        dispatch(loggedInUser())
+        .then((data) => console.log(data))
     };
 
     function DisplayRequestCards(){
         return (<>
-            {state.myrequests.map(item => (
+            {state ? state.myrequests.map(item => (
                 <DisplayPetRequestCard
                     userId={state._id}
                     petId={item.petId}
                 />
-            ))}
+            )) : null}
         </>)
     }
 

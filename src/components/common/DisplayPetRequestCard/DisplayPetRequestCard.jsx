@@ -1,10 +1,6 @@
 import React, { useState, useEffect } from "react";
 import styles from "./DisplayPetRequestCard.module.css";
 import axios from "axios"
-// import { useDispatch, useSelector } from 'react-redux';
-// import { sendRequest } from "../../../store/slices/AddPetSlice";
-// import { petInDetail } from "../../../store/slices/PetInDetailSlice";
-// import {useNavigate} from 'react-router-dom'
 import { Card } from "react-bootstrap";
 
 
@@ -15,26 +11,6 @@ function DisplayPetRequestCard({userId, petId}) {
   const imageKey = pet.petimages ? pet.petimages[0].image : "";
   const [userFlag, setUserFlag] = useState(false)
   const [userData, setUserData] = useState({})
-
-  // async function FetchNameLocation() {
-  //   const res = axios({
-  //     method: "get",
-  //     // url: "https://petpalbackend.herokuapp.com/logout",
-  //     url: `/username/${pet.userId}`,
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //     },
-  //   });
-  //   return res;
-  // }
-
-  // useEffect(() => {
-  //   FetchNameLocation().then(data => {
-  //     console.log(data);
-  //     setUserData(data.data[0]);
-  //   })
-  //   // eslint-disable-next-line
-  // },[])
 
   async function FetchPetDetails(userId, petId) {
     console.log(userId, petId);
@@ -66,14 +42,6 @@ function DisplayPetRequestCard({userId, petId}) {
     )
     // eslint-disable-next-line
   },[])
-
-  // const getOwner = async () => {
-  //   FetchNameLocation().then(data => {
-  //     console.log(data);
-  //     setUserData(data.data[0]);
-  //     window.alert(userData.name+" "+userData.phone)
-  //   })
-  // }
   
   return (
     <Card key={petId} className={styles.wrapper}>
