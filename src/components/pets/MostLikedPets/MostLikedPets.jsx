@@ -16,10 +16,10 @@ function MostLikedPets() {
     if (B > A) return -1;
   }
 
-  // const sortState = state.sort((a, b) => a.likes.length - b.likes.length)
-  if(state.length!==0){
-    console.log(state[0].sort(compare),"After sorting");
-  }
+  // // const sortState = state.sort((a, b) => a.likes.length - b.likes.length)
+  // if(state.length!==0){
+  //   console.log(state[0].sort(compare),"After sorting");
+  // }
   return (
     <div>
       <div className={styles.grid_container_h1}>

@@ -26,7 +26,6 @@ function SignUp({handleSignUpClose, handleLoginSignUpToggle}) {
 
   async function handlePost(e) {
     e.preventDefault();
-
     const { name, email, phone, location, password, cpassword } = user;
     const res = dispatch(
       signUpUser({ name, email, phone, location, password, cpassword })

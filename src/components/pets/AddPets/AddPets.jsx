@@ -9,7 +9,8 @@ import petgender from "../../mock-constant/pet-gender-constant.json";
 import petsize from "../../mock-constant/pet-size-contant.json";
 import DropDownField from "../../common/DropDownField/DropDownField";
 // eslint-disable-next-line
-import { useNavigate } from "react-router-dom";
+import { Navigate, useNavigate } from "react-router-dom";
+import { loggedInUser } from "../../../store/slices/LoggedInUserDataSlice";
 
 export default function AddPets() {
   const state = useSelector(state => state.loggedInUserDetails)
@@ -30,7 +31,12 @@ export default function AddPets() {
   const [displayImageName, setDisplayImageName] = useState();
   const [submitted, setSubmitted] = useState(false);
   const [files, setFiles] = useState([]);
-  // const navigate =useNavigate();
+  const navigate =useNavigate();
+
+  const checkUser = async () => {
+    dispatch(loggedInUser())
+    .catch(() =>navigate("/home"))
+  };
 
   async function postImage({ image, petId }) {
     const formData = new FormData();
@@ -64,6 +70,7 @@ export default function AddPets() {
     setFiles(items);
   };
   useEffect(() => {
+    checkUser();
     let imageThumbnailName = files.map((image, index) => {
       return (
         <div tabIndex={0} key={image.name} style={{ display: "flex" }}>
