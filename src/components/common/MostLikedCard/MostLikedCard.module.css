@@ -3,8 +3,6 @@
   right: 64.67%;
   top: 48.04%;
   bottom: 38.73%;
-  background: linear-gradient(0deg, rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.5)),
-    url("https://images.unsplash.com/photo-1518791841217-8f162f1e1131?ixlib=rb-1.2.1&ixid=eyJhcHBfaWQiOjEyMDd9&auto=format&fit=crop&w=1350&q=80");
   mix-blend-mode: normal;
   opacity: 0.9;
   box-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25);
@@ -29,12 +27,13 @@
   align-items: center;
   color: #ffffff;
   border-radius: 4.00393px;
-  margin-bottom: 1.5rem;
+  margin-bottom: 3.5rem;
+  z-index: 1;
 }
 
 .card_title_paragraph {
   width: 223.82px;
-  height: 56.25px;  
+  height: 56.25px;
   font-style: normal;
   font-weight: 500;
   font-size: 18px;
@@ -42,4 +41,9 @@
   letter-spacing: 0.03em;
   color: #ffffff;
   border-radius: 4.00393px;
+  z-index: 1;
+  display: -webkit-box;
+  -webkit-line-clamp: 2; /* number of lines to show */
+  line-clamp: 2;
+  overflow: hidden;
 }
