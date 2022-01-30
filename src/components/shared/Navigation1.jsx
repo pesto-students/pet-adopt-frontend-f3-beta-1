@@ -42,7 +42,7 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
             <Link to="/contact">Add Pet</Link>
           </NavDropdown.Item>
           <NavDropdown.Item>
-            <Link to={`/myrequests/${state._id}`}>My requests</Link> 
+            <Link to={`/myrequests/${state._id}`}>My requests</Link>
           </NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
@@ -72,8 +72,9 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
               width="30"
               height="30"
               className="d-inline-block align-top"
-              alt=""
-            />{" "}
+              alt="petpal logo"
+              loading="lazy"
+            />
             PetPal
           </Navbar.Brand>
           <Navbar.Toggle aria-controls="responsive-navbar-nav" />

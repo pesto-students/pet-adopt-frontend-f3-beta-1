@@ -37,26 +37,30 @@ function RespondCard({petId,userId,status}) {
 
   return (
     <Col xs={12} md={6}>
-    <div className={styles.respondcard__container}>
-      <div className={styles.respondcard__inner_container}>
-        <img
-          className={styles.respondcard__container_image}
-          src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
-          alt="RespondCard"
-        />
-        <div className={styles.respondcard__container_text_content}>
-          <div className={styles.respondcard__container_text_name}>
-            {userData.name} 
+      <div className={styles.respondcard__container}>
+        <div className={styles.respondcard__inner_container}>
+          <img
+            className={styles.respondcard__container_image}
+            src="https://images.pexels.com/photos/67636/rose-blue-flower-rose-blooms-67636.jpeg?auto=compress&cs=tinysrgb&dpr=2&h=750&w=1260"
+            alt="RespondCard"
+            loading="lazy"
+          />
+          <div className={styles.respondcard__container_text_content}>
+            <div className={styles.respondcard__container_text_name}>
+              {userData.name}
+            </div>
+            <div className={styles.respondcard__container_text_location}>
+              {userData.location}
+            </div>
+            <Button
+              onClick={handleRespondClick}
+              className={styles.respondcard__container_button}
+            >
+              {status ? "Responded" : "Respond"}
+            </Button>
           </div>
-          <div className={styles.respondcard__container_text_location}>
-            {userData.location}
-          </div>
-          <Button onClick={handleRespondClick} className={styles.respondcard__container_button}>
-            {status ? "Responded" : "Respond"}
-          </Button>
         </div>
       </div>
-    </div>
     </Col>
   );
 }

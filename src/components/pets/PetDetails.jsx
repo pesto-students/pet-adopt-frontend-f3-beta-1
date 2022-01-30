@@ -110,15 +110,16 @@ function PetDetails() {
       <div style={{marginTop:"10px", textAlign:"center"}}><h1>{state.petname}</h1></div>
       <div>
           <Carousel className="pet-carousel">
-          {state.petimages.length ? state.petimages.map(image =>{ return (  
-            <Carousel.Item >
+          {state.petimages.length ? state.petimages.map(image =>{ return (
+            <Carousel.Item>
               <img
                 className="-block w-100"
-                src={"/images/"+image.image}
+                src={"/images/" + image.image}
                 alt="First slide"
+                loading="lazy"
               />
             </Carousel.Item>
-          )}) : null}           
+          );}) : null}           
         </Carousel>
       </div>
       <div className={styles.detailsDivStyles}>

@@ -1,61 +1,74 @@
 import React from "react";
 import styles from "./DisplayPetCard.module.css";
-import { useDispatch, useSelector } from 'react-redux';
+import { useDispatch, useSelector } from "react-redux";
 import { sendRequest } from "../../../store/slices/AddPetSlice";
 import { petInDetail } from "../../../store/slices/PetInDetailSlice";
-import {useNavigate} from 'react-router-dom'
-import { Card,Button } from "react-bootstrap";
-
+import { useNavigate } from "react-router-dom";
+import { Card, Button } from "react-bootstrap";
 
 // import {loggedInUser} from "../../../store/slices/LoggedInUserDataSlice"
 
-function DisplayPetCard({userId, _id,about,petname,petimages=[{image:''}],requests=[],selectedPet,adoptionFee,gender}) {
+function DisplayPetCard({
+  userId,
+  _id,
+  about,
+  petname,
+  petimages = [{ image: "" }],
+  requests = [],
+  selectedPet,
+  adoptionFee,
+  gender,
+}) {
   console.log(requests);
-  const imageKey = petimages.length ? petimages[0].image : "1309b1565d06708b4a1660de6d7078de";
-  const state = useSelector(state=>state.loggedInUserDetails);
+  const imageKey = petimages.length
+    ? petimages[0].image
+    : "1309b1565d06708b4a1660de6d7078de";
+  const state = useSelector((state) => state.loggedInUserDetails);
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
   const handlePetClick = async () => {
-    window.alert("PetClicked "+_id);
-    dispatch(petInDetail(_id))
-     .then(data =>navigate(`/petindetail/${_id}`))
-  }
+    window.alert("PetClicked " + _id);
+    dispatch(petInDetail(_id)).then((data) => navigate(`/petindetail/${_id}`));
+  };
 
   const handleSendRequest = async () => {
-    window.alert("PetClicked "+_id);
-    dispatch(sendRequest({_id,userId:state._id}))
-    .then(() =>{
-      dispatch(petInDetail(_id))
-     .then(data =>navigate(`/petindetail/${_id}`))
-    })
-    // .then(data => {
-    //   console.log(data)
-    //   navigate("/petindetail")
-    //   })
-    .catch(err => console.log(err));
-  }
+    window.alert("PetClicked " + _id);
+    dispatch(sendRequest({ _id, userId: state._id }))
+      .then(() => {
+        dispatch(petInDetail(_id)).then((data) =>
+          navigate(`/petindetail/${_id}`)
+        );
+      })
+      // .then(data => {
+      //   console.log(data)
+      //   navigate("/petindetail")
+      //   })
+      .catch((err) => console.log(err));
+  };
 
   function userExists(uid) {
-    return requests.some(function(el) {
+    return requests.some(function (el) {
       return el.userId === uid;
-    }); 
+    });
   }
 
   const RequestButton = () => {
-    console.log(userId,state._id);
-    if(userId===state._id){
-      return <Button>{requests.length} Request{requests.length>1 ? "s" : null}</Button>
+    console.log(userId, state._id);
+    if (userId === state._id) {
+      return (
+        <Button>
+          {requests.length} Request{requests.length > 1 ? "s" : null}
+        </Button>
+      );
+    } else if (userExists(state._id)) {
+      return <Button>Request Sent</Button>;
+    } else {
+      return <Button onClick={handleSendRequest}>Send Request</Button>;
     }
-    else if(userExists(state._id)){
-      return <Button>Request Sent</Button>
-    }
-    else{
-      return <Button onClick={handleSendRequest}>Send Request</Button>      
-    }
-  }
+  };
 
-  const aboutTrim = about.slice(0,70)+"..."
+  const aboutTrim = about.slice(0, 70) + "...";
   return (
     <Card key={_id} className={styles.wrapper}>
       <div className={styles.card_wrapper}>
@@ -63,8 +76,9 @@ function DisplayPetCard({userId, _id,about,petname,petimages=[{image:''}],reques
           <div onClick={handlePetClick} className={styles.card_image}>
             <img
               className={styles.card_image}
-              src={"/images/"+imageKey}
+              src={"/images/" + imageKey}
               alt="pet"
+              loading="lazy"
             />
           </div>
           <div className={styles.card_details}>
@@ -74,9 +88,7 @@ function DisplayPetCard({userId, _id,about,petname,petimages=[{image:''}],reques
               <span className={styles.card_title_gender}>{gender}</span>
             </div>
             <div className={styles.card_paragraph}>
-              <p>
-                {aboutTrim}
-              </p>
+              <p>{aboutTrim}</p>
             </div>
             <div className={styles.card_footer}>
               <span className={styles.card_footer_amount}>{adoptionFee}</span>

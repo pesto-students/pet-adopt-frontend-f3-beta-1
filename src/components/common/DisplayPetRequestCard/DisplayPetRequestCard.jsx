@@ -82,8 +82,9 @@ function DisplayPetRequestCard({userId, petId}) {
           <div className={styles.card_image}>
             <img
               className={styles.card_image}
-              src={"/images/"+imageKey}
+              src={"/images/" + imageKey}
               alt="pet"
+              loading="lazy"
             />
           </div>
           <div className={styles.card_details}>
@@ -94,14 +95,20 @@ function DisplayPetRequestCard({userId, petId}) {
             </div>
             <div className={styles.card_paragraph}>
               <span>
-                {userFlag ? <span >{ userData.name }{" "}{ userData.phone } </span> : "owner still not responded!!!"}
+                {userFlag ? (
+                  <span>
+                    {userData.name} {userData.phone}{" "}
+                  </span>
+                ) : (
+                  "owner still not responded!!!"
+                )}
               </span>
             </div>
             <div className={styles.card_footer}>
-              <span className={styles.card_footer_amount}>{pet.adoptionFee}</span>
-              <span className={styles.card_footer_send_request}>
-                
+              <span className={styles.card_footer_amount}>
+                {pet.adoptionFee}
               </span>
+              <span className={styles.card_footer_send_request}></span>
             </div>
           </div>
         </div>
