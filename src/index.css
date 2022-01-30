@@ -31,3 +31,7 @@ body {
   margin-left: 10em;
   margin-right: 10em;
 }
+
+#root {
+  overflow: hidden;
+}
