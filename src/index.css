@@ -16,6 +16,7 @@ body {
   z-index: 999;
   width: 100%;
   background-color: #0081fe;
+  color: white;
 }
 
 .my-nav-home {
@@ -23,6 +24,7 @@ body {
   z-index: 999;
   width: 100%;
   background-color: none;
+  color: white;
 }
 
 .pet-carousel {

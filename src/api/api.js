@@ -3,8 +3,8 @@ import axios from "axios";
 function FetchLoginAuth(email, password) {
   const res = axios({
     method: "post",
-    url: "https://petpalbackend.herokuapp.com/signin",
-    // url: "/signin",
+    // url: "https://petpalbackend.herokuapp.com/signin",
+    url: "/signin",
     headers: {
       "Content-Type": "application/json",
     },
@@ -16,8 +16,8 @@ function FetchLoginAuth(email, password) {
 function FetchLogoutAuth(userId) {
   const res = axios({
     method: "post",
-    url: "https://petpalbackend.herokuapp.com/logout",
-    // url: "/logout",
+    // url: "https://petpalbackend.herokuapp.com/logout",
+    url: "/logout",
     headers: {
       "Content-Type": "application/json",
     },
@@ -27,7 +27,7 @@ function FetchLogoutAuth(userId) {
 }
 
 export default axios.create({
-  baseURL: "https://petpalbackend.herokuapp.com/",
+  // baseURL: "https://petpalbackend.herokuapp.com/",
   headers: {
     "Content-type": "application/json",
   },

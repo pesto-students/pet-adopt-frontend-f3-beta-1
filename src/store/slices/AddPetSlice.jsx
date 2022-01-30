@@ -35,7 +35,7 @@ const addPetDetailSlice = createSlice({
       state.push(action.payload);
     },
     [fetchAllPetDetails.fulfilled]: (state, action) => {
-      state.push(action.payload);
+      return action.payload;
     },
     [sendRequest.fulfilled]: (state, action) => {
       state.push(action.payload);
