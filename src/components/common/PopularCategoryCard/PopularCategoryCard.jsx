@@ -9,7 +9,7 @@ function PopularCategoryCard({ category, url }) {
       <Link to={`/category/${category}`}>
         <div className={styles.popular_category_card}>
           <div className={styles.popular_category_card_content}>
-            <img className={styles.popular_category_card_image} src={url} />
+            <img className={styles.popular_category_card_image} src={url} alt="" />
             <div>
               <div className={styles.popular_category_card_title}>
                 {category}

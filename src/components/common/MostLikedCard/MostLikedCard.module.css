@@ -18,14 +18,14 @@
   text-align: center;
   color: white;
   opacity: 0.8;
-  filter: alpha(opacity=40);
+  background-color: black !important;
+  filter: grayscale(30%);
 }
 
 /* Container holding the image and the text */
 .container {
   position: relative;
   text-align: center;
-  color: white;
 }
 
 .card_title {
@@ -40,6 +40,7 @@
   margin-bottom: 3.5rem;
   z-index: 1;
   text-emphasis: center;
+  text-shadow: 1px 1px 0px;
 }
 
 .card_title_paragraph {

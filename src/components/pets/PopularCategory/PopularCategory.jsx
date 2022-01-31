@@ -2,12 +2,13 @@ import React from "react";
 import PopularCategoryCard from "../../common/PopularCategoryCard/PopularCategoryCard";
 import { Row } from "react-bootstrap";
 import styles from "./PopularCategory.module.css";
-import PetCategory from "../../mock-constant/pet-category-constant.json"
+import PetCategory from "../../mock-constant/pet-category-images.json"
 
 function PopularCategory() {
-  let list = PetCategory["Pet Category"].map((item, index) => (
+  let list = PetCategory["PetCategoryImage"].map((item, index) => (
     <PopularCategoryCard
-      category = {item}
+      category = {item.name}
+      url = {item.url}
       key = { item }
     />
   ));

@@ -14,6 +14,7 @@ import {
   PetDetails,
   DisplayAllPets,
   MyRequests,
+  MyAccount,
   } from "./components/index";
 
 function App() {
@@ -54,6 +55,7 @@ function App() {
       <Route path="/about" element={<About />} />
       <Route path="/contact" element={<Contact />} />
       <Route path="/logout" element={<Logout />} />
+      <Route path="/myaccount" element={<MyAccount />} />
       <Route path="/myrequests/:userId" element={<MyRequests />} />
       <Route path="/petindetail/:petId" element={<PetDetails />} />
       <Route path="/petindetail/:petId/reqs" element={<PetDetails />} />

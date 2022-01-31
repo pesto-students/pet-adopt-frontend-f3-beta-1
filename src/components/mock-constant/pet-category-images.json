@@ -1,0 +1,41 @@
+{
+    "PetCategoryImage": [
+    {
+        "name":"Dogs",
+        "url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSBpVLBf4t3xWOvImaxo13SH0wUs18toOyKVWrfK6SBAjdgBOpRdYXrji5uKoKo3BfBOxQ&usqp=CAU"
+    },
+    {
+        "name":"Cats",
+        "url":"https://images.unsplash.com/photo-1595433707802-6b2626ef1c91?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8MXx8fGVufDB8fHx8&w=1000&q=80"
+    },
+    {
+        "name":"Rabbit",
+        "url":"https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcR8owLHYBithDsCiEWpBxRstKqGVoSGBtBt8Q&usqp=CAU"
+    },
+    {
+        "name":"Birds",
+        "url":"https://www.thespruce.com/thmb/rk3DGZLrlgEOprRfSwKqKopUzk4=/2121x1193/smart/filters:no_upscale()/Bird-GettyImages-582446599-58ec5c4d5f9b58ef7e24e7f4.jpg"
+    },
+    {
+        "name":"Horses",
+        "url":"https://st.depositphotos.com/2221418/2410/i/600/depositphotos_24103207-stock-photo-friesian-mare-in-front-of.jpg"
+    },
+    {
+        "name":"Fish",
+        "url":"https://images.unsplash.com/photo-1522720833375-9c27ffb02a5e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxzZWFyY2h8MXx8YXF1YXJpdW0lMjBmaXNofGVufDB8fDB8fA%3D%3D&w=1000&q=80"
+    },
+    {
+        "name":"Turtles",
+        "url":"https://images.squarespace-cdn.com/content/v1/5369465be4b0507a1fd05af0/1528837069483-LD1R6EJDDHBY8LBPVHIU/randall-ruiz-272502.jpg?format=1500w"
+    },
+    {
+        "name":"Reptiles",
+        "url":"https://live.staticflickr.com/65535/48329213772_3819880e7f_z.jpg"
+    },
+    {
+        "name":"Barnyard",
+        "url":"https://images.unsplash.com/photo-1570042225831-d98fa7577f1e?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8M3x8fGVufDB8fHx8&w=1000&q=80"
+    }
+    ]
+}
+  
