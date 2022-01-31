@@ -1,5 +1,6 @@
 .wrapper {
   border: none !important;
+  padding: 1rem;
 }
 
 .card_wrapper {
@@ -16,15 +17,16 @@
 }
 
 .card_image {
-  width: 230px;
-  height: 230px;
-  left: 0px;
-  top: 0px;
+  width: 200px;
+  height: 200px;
+  margin: 0.30rem 0.3rem 0.3rem;
   border-radius: 12px;
 }
 
+
 .card_details {
-  margin: 1rem;
+  /* margin: 1rem; */
+  padding:1rem;
 }
 
 .card_title,

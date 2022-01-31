@@ -85,7 +85,7 @@ function PetDetails() {
   const AboutPart = () => {
     return (
     <div className={styles.detailsDivStyles}>
-    <div className={styles.grid_container_h1}>Requests</div>
+    <div className={styles.aboutH1Styles}>About</div>
     <p>
       {state.about}
     </p>

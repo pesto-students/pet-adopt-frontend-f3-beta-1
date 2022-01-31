@@ -23,6 +23,14 @@
     margin-right: 10em;
 }
 
+.aboutH1Styles{
+  margin-top: 2em;
+  margin-left: 0em;
+  margin-right: 10em;
+  font-weight: bold;
+  font-size: 24px;
+}
+
 .grid_container {
     width: 79%;
     margin: auto;
@@ -36,13 +44,9 @@
   .grid_container_h1 {
     width: 63%;
     margin: auto;
-    width: 328px;
-    height: 29px;
-    left: 131px;
-    top: 1793px;
     font-style: normal;
     font-weight: bold;
-    font-size: 28px;
+    font-size: 24px;
     line-height: 33px;
     color: #000000;
   }
