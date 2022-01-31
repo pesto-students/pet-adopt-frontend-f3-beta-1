@@ -14,13 +14,23 @@
   flex-direction: column;
   align-items: center;
   justify-content: center;
+  position: relative;
+  text-align: center;
+  color: white;
+  opacity: 0.8;
+  filter: alpha(opacity=40);
+}
+
+/* Container holding the image and the text */
+.container {
+  position: relative;
+  text-align: center;
+  color: white;
 }
 
 .card_title {
-  width: 174px;
-  height: 51px;
   font-style: normal;
-  font-weight: 900;
+  font-weight: 500;
   font-size: 32.0315px;
   line-height: 36px;
   display: flex;
@@ -29,6 +39,7 @@
   border-radius: 4.00393px;
   margin-bottom: 3.5rem;
   z-index: 1;
+  text-emphasis: center;
 }
 
 .card_title_paragraph {
@@ -36,7 +47,7 @@
   height: 56.25px;
   font-style: normal;
   font-weight: 500;
-  font-size: 18px;
+  font-size: 12px;
   line-height: 21px;
   letter-spacing: 0.03em;
   color: #ffffff;
@@ -46,4 +57,23 @@
   -webkit-line-clamp: 2; /* number of lines to show */
   line-clamp: 2;
   overflow: hidden;
+}
+
+/* Centered text */
+.card_title_centered {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+
+  font-style: normal;
+  font-weight: 500;
+  font-size: 24px;
+  line-height: 36px;
+  display: flex;
+  align-items: center;
+  color: #ffffff;
+  border-radius: 4.00393px;
+  margin-bottom: 3.5rem;
+  z-index: 1;
 }
