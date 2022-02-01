@@ -18,7 +18,7 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
 
   useEffect(() => {
     //checkUser();
-    if (urlLocation.pathname === "/home" || urlLocation.pathname === "/" || urlLocation.pathname === "/about") {
+    if (urlLocation.pathname === "/home" || urlLocation.pathname === "/" || urlLocation.pathname === "/mypets") {
       setStyleNavbar(true);
     } else {
       setStyleNavbar(false);
@@ -36,8 +36,8 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
           id="basic-nav-dropdown"
         >
           <NavDropdown.Item href="/myaccount">My Account</NavDropdown.Item>
-          <NavDropdown.Item onClick={()=> navigate("/about")}>My Pet</NavDropdown.Item>
-          <NavDropdown.Item onClick={()=> navigate("/contact")} >Add Pet</NavDropdown.Item>
+          <NavDropdown.Item onClick={()=> navigate("/mypets")}>My Pet</NavDropdown.Item>
+          <NavDropdown.Item onClick={()=> navigate("/addpet")} >Add Pet</NavDropdown.Item>
           <NavDropdown.Item onClick={()=> navigate(`/myrequests/${state._id}`)}>My Requests</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
@@ -63,7 +63,7 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
         variant="dark"
       >
         <Container>
-          <Navbar.Brand href="/">
+          <Navbar.Brand onClick={()=>{navigate("/home")}}>
             <img
               src="http://dogprintsgrooming.com/wp-content/uploads/2015/03/Dog_Print_Icons_3.png"
               width="30"

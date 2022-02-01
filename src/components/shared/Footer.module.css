@@ -1,6 +1,6 @@
 .style_contianer{
   width: 75%;
-    margin-top: 1rem;
+  margin-top: 1rem;
 }
 
 .footer_subscribe_container {
@@ -16,10 +16,6 @@
 }
 
 .footer_subscribe_container_title {
-  left: 58.82%;
-  right: 33.28%;
-  top: 85.97%;
-  bottom: 13.11%;
   font-style: normal;
   font-weight: bold;
   font-size: 16px;

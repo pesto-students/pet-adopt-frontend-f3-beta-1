@@ -1,5 +1,6 @@
 .wrapper {
   border: none !important;
+  padding-bottom: 1rem;
 }
 
 .card_wrapper {
