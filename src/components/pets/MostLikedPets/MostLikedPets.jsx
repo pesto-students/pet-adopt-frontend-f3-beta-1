@@ -18,7 +18,7 @@ function MostLikedPets() {
   return (
     <div>
       <div className={styles.grid_container_h1}>
-        <h2>MostLikedCard</h2>
+        <h2>Most Liked Pets</h2>
       </div>
       <Row className={styles.grid_container}>
         <MostLikedCard mostLiked={mostLikedState[0] || "mostLiked"} />

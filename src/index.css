@@ -35,3 +35,7 @@ body {
 #root {
   overflow: hidden;
 }
+
+.carousel-inner {
+  height: 100vh;
+}
