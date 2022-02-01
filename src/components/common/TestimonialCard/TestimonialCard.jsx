@@ -3,7 +3,7 @@ import styles from "./TestimonialCard.module.css";
 import { Rating } from "react-simple-star-rating";
 import { Col } from "react-bootstrap";
 
-function TestimonialCard() {
+function TestimonialCard({name,url,desc}) {
   return (
     <Col xs={12} md={6}>
       <div className={styles.testimonial_card_container}>
@@ -12,24 +12,25 @@ function TestimonialCard() {
             <div
               className={styles.testimonial_card_container_content_paragraph}
             >
-              PetPal is such an app where i have found my pet.
+              {desc}
             </div>
             <div className={styles.testimonial_card_container_content_author}>
-              Jason P
+              {name}
             </div>
             <div
               className={
                 styles.testimonial_card_container_content_author_rating
               }
             >
-              <Rating size={25} ratingValue={100} />
+              <Rating size={25} readonly={true} ratingValue={100} />
             </div>
           </div>
           <div>
             <img
               className={styles.testimonial_card_container_content_img}
-              src="https://media.geeksforgeeks.org/wp-content/uploads/20210425000233/test-300x297.png"
-              alt=""
+              src={url}
+              alt="Testimonial Card"
+              loading="lazy"
             />
           </div>
         </div>

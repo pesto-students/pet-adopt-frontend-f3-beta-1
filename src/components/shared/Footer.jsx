@@ -17,7 +17,7 @@ function Footer() {
           <div className="row">
             <div className="col-12 col-lg-10 mx-auto">
               <div className="row">
-                <div className={`col-6 col-lg-3 ${styles.allign_footer}`}>
+                <div className={`col-6 col-lg-4 ${styles.allign_footer}`}>
                   <div className={styles.footer_subscribe_container_title}>
                     Information
                   </div>
@@ -27,7 +27,7 @@ function Footer() {
                     <li className={styles.li_style}>Support</li>
                   </ul>
                 </div>
-                <div className={`col-6 col-lg-3 ${styles.allign_footer}`}>
+                <div className={`col-6 col-lg-4 ${styles.allign_footer}`}>
                   <div className={styles.footer_subscribe_container_title}>
                     Company
                   </div>
@@ -38,7 +38,7 @@ function Footer() {
                   </ul>
                 </div>
 
-                <div className="col-6 col-lg-3">
+                <div className="col-6 col-lg-4">
                   <div className={styles.footer_subscribe_container}>
                     <div className={styles.footer_subscribe_container_title}>
                       Subscribe
