@@ -1,6 +1,6 @@
 import { useSelector } from "react-redux";
 import { Navbar, Container, Nav, NavDropdown } from "react-bootstrap";
-import { Link, useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import React, { useEffect, useState } from "react";
 // import { useDispatch } from "react-redux";
 // import { loggedInUser } from "../../store/slices/LoggedInUserDataSlice";
@@ -8,6 +8,7 @@ import React, { useEffect, useState } from "react";
 function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
   // const dispatch = useDispatch();
   const urlLocation = useLocation();
+  const navigate = useNavigate();
   const [styleNavbar, setStyleNavbar] = useState(true);
   const state = useSelector((state) => state.loggedInUserDetails);
 
@@ -30,21 +31,14 @@ function Navigation1({ handleLoginShow, handleSignUpShow, auth }) {
       return (
         <>
         <NavDropdown
-          styles="{{background-color: transparent}}"
-          bg="none"
+          bg="dark"
           title={state.name}
           id="basic-nav-dropdown"
         >
           <NavDropdown.Item href="/myaccount">My Account</NavDropdown.Item>
-          <NavDropdown.Item href="/about">My Pet</NavDropdown.Item>
-          <NavDropdown.Item href="/contact">Add Pet</NavDropdown.Item>
-          <NavDropdown.Item><Link to={`/myrequests/${state._id}`} >My Requests</Link></NavDropdown.Item>
-          {/* <NavDropdown.Divider />
-            <Nav.Link as={Link} to="/about">My Pet</Nav.Link>
-          <NavDropdown.Divider />
-            <Nav.Link as={Link} to="/contact">Add Pet</Nav.Link>
-          <NavDropdown.Divider />
-            <Nav.Link as={Link} to={`/myrequests/${state._id}`}>My requests</Nav.Link> */}
+          <NavDropdown.Item onClick={()=> navigate("/about")}>My Pet</NavDropdown.Item>
+          <NavDropdown.Item onClick={()=> navigate("/contact")} >Add Pet</NavDropdown.Item>
+          <NavDropdown.Item onClick={()=> navigate(`/myrequests/${state._id}`)}>My Requests</NavDropdown.Item>
           <NavDropdown.Divider />
           <NavDropdown.Item href="/logout">Logout</NavDropdown.Item>
         </NavDropdown>

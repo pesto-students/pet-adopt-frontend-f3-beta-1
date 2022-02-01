@@ -21,8 +21,8 @@ function DisplayPetCard({
 }) {
   console.log(requests);
   const imageKey = petimages.length
-    ? petimages[0].image
-    : "1309b1565d06708b4a1660de6d7078de";
+    ? "/images/" + petimages[0].image
+    : "https://i.stack.imgur.com/mwFzF.png";
   const state = useSelector((state) => state.loggedInUserDetails);
   const dispatch = useDispatch();
   const navigate = useNavigate();
@@ -76,22 +76,22 @@ function DisplayPetCard({
           <div onClick={handlePetClick} className={styles.card_image}>
             <img
               className={styles.card_image}
-              src={"/images/" + imageKey}
+              src={imageKey}
               alt="pet"
               loading="lazy"
             />
           </div>
           <div className={styles.card_details}>
             <div className={styles.card_title}>
-              <span className={styles.card_title_name}>{petname}</span>
-              <span className={styles.card_title_breed}>{selectedPet}</span>
-              <span className={styles.card_title_gender}>{gender}</span>
+              <span className={styles.card_title_name}>{petname.toUpperCase()}</span>
             </div>
             <div className={styles.card_paragraph}>
               <p>{aboutTrim}</p>
+              <span className={styles.card_title_breed}>{selectedPet}</span>              
             </div>
             <div className={styles.card_footer}>
-              <span className={styles.card_footer_amount}>{adoptionFee}</span>
+              <span className={styles.card_footer_amount}>₹{adoptionFee}</span>
+              <span className={styles.card_title_gender}>{gender}</span>
               <span className={styles.card_footer_send_request}>
                 <RequestButton />
               </span>

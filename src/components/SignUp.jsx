@@ -27,23 +27,24 @@ function SignUp({handleSignUpClose, handleLoginSignUpToggle}) {
   async function handlePost(e) {
     e.preventDefault();
     const { name, email, phone, location, password, cpassword } = user;
-    const res = dispatch(
-      signUpUser({ name, email, phone, location, password, cpassword })
-    );
+    if (password === cpassword) {
+      const res = dispatch(
+        signUpUser({ name, email, phone, location, password, cpassword })
+      );
 
-    res
-    .then(data => {
-      console.log(data.payload,"signup.jsx")
-      if (data.payload === 201) {
-        window.alert("Registration Successful!!");
-        console.log(data, userDetails, "userDetails");
-        handleSignUpClose();
-      } else {
-        console.log(data, userDetails, "userDetails");
-        window.alert("Registeration failed");
-      }
-      navigate("/home");
-  });
+      res.then((data) => {
+        console.log(data.payload, "signup.jsx");
+        if (data.payload === 201) {
+          window.alert("Registration Successful!!");
+          console.log(data, userDetails, "userDetails");
+          handleSignUpClose();
+        } else {
+          console.log(data, userDetails, "userDetails");
+          window.alert("Registeration failed");
+        }
+        navigate("/home");
+      });
+    }
     // console.log(data);
   }
 

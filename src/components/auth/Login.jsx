@@ -73,7 +73,7 @@ function Login({handleLoginClose, handleLoginSignUpToggle, setAuth}) {
                 className="mb-3"
                 controlId="formBasicCheckbox"
               ></Form.Group>
-              <Button variant="primary" onClick={handleLogin}>
+              <Button type="submit" variant="primary" onClick={handleLogin}>
                 Login
               </Button>{" "}
               <Button variant="link" onClick={handleLoginSignUpToggle}>
